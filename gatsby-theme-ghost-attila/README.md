@@ -28,9 +28,9 @@ If you want to add this blog theme to an existing site, follow these instruction
 1. Install the blog theme
 
     ```bash
-    yarn add @armada/gatsby-attila-theme-ghost
+    yarn add @armada-inc/gatsby-attila-theme-ghost
     # or
-    npm install @armada/gatsby-attila-theme-ghost --save
+    npm install @armada-inc/gatsby-attila-theme-ghost --save
     ```
 
 2. Add the following configuration to your `gatsby-config.js` file
