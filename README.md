@@ -20,7 +20,7 @@ Play with the [Demo](https://gatsby-attila.netlify.com/) to get a first impressi
 
 ## Quick Start
 
-Head over to the [starter repo](https://github.com/armada-inc/gatsby-starter-try-starter) to get up and running quickly! The starter is recommended if you are creating a new site.
+Head over to the [starter repo](https://github.com/armada-inc/gatsby-attila-theme-starter) to get up and running quickly! The starter is recommended if you are creating a new site.
 
 
 ## Installation

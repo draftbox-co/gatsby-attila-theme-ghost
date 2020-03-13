@@ -170,6 +170,7 @@ textarea {
     padding: 0;
     background: $color-border;
     border: 0;
+    width: 100%;
     @media (prefers-color-scheme: dark) {
       background: $color-border-dark;
     }
@@ -403,15 +404,16 @@ textarea {
     margin: auto;
     font-size: 0.75em;
     line-height: 2em;
-    padding: 2rem 0;
+    padding: 1rem 0;
+    text-align: center;
 
     &:after {
       content: "";
       position: absolute;
       left: 0;
       bottom: 0;
-      width: 8rem;
       height: 1px;
+      right: 0;
       background: $color-border;
       @media (prefers-color-scheme: dark) {
         background: $color-border-dark;

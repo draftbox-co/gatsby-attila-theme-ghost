@@ -12,7 +12,7 @@ Play with the [Demo](https://gatsby-attila.netlify.com/) to get a first impressi
 
 ## Features
 
-- Ghost Casper skin and functionality
+- Ghost Attila skin and functionality
 - SEO optimized
 - Fully responsive
 - Composable and extensible

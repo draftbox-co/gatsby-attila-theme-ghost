@@ -1,115 +1,78 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
-import { useEffect } from "react";
 import Helmet from "react-helmet";
 import { MetaData } from "../components/meta";
 
-const PostTemplate = ({ data, location }) => {
-  const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPost.title}&url=${data.ghostPost.url}`;
+const PageTemplate = ({ data, location }) => {
+  const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPage.title}&url=${data.ghostPage.url}`;
 
-  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${data.ghostPost.url}`;
+  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${data.ghostPage.url}`;
 
-  const linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&amp;url=${data.ghostPost.url}/&amp;title=${data.ghostPost.title}`;
+  const linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&amp;url=${data.ghostPage.url}/&amp;title=${data.ghostPage.title}`;
 
-  const mailShareUrl = `mailto:?subject=${data.ghostPost.title}&amp;body=${data.ghostPost.url}`;
-
-  const postContentRef = useRef();
-
-  const [readProgress, setReadProgress] = useState(0);
-
-  useEffect(() => {
-    var post = document.querySelector(".post-content");
-    window.addEventListener("scroll", () => {
-      var postBottom =
-        post.getBoundingClientRect().top +
-        document.documentElement.scrollTop +
-        post.offsetHeight;
-      var viewportHeight = window.innerHeight;
-      var progress =
-        100 -
-        ((postBottom - (window.scrollY + viewportHeight) + viewportHeight / 3) /
-          (postBottom - viewportHeight + viewportHeight / 3)) *
-          100;
-
-      setReadProgress(progress);
-
-      return () => {
-        window.removeEventListener("scroll");
-      };
-    });
-  });
+  const mailShareUrl = `mailto:?subject=${data.ghostPage.title}&amp;body=${data.ghostPage.url}`;
 
   return (
     <>
       <MetaData data={data} location={location} type="article" />
       <Helmet>
-        <style type="text/css">{`${data.ghostPost.codeinjection_styles}`}</style>
+        <style type="text/css">{`${data.ghostPage.codeinjection_styles}`}</style>
       </Helmet>
-      <div className={data.ghostPost.feature_image ? "cover-active" : ""}>
+      <div className={data.ghostPage.feature_image ? "cover-active" : ""}>
         <Layout>
-          <div
-            className={`progress-container ${
-              readProgress > 100 ? "complete" : ""
-            }`}
-          >
-            <span
-              style={{ width: `${readProgress}%` }}
-              className="progress-bar"
-            ></span>
-          </div>
           <header
             className={
-              "post-header " + (data.ghostPost.feature_image ? "has-cover" : "")
+              "post-header " + (data.ghostPage.feature_image ? "has-cover" : "")
             }
           >
             <div className="inner">
               <span className="post-info">
                 <span className="post-type">Article</span>
-                {data.ghostPost.primary_tag && (
+                {data.ghostPage.primary_tag && (
                   <span className="post-count">
-                    {data.ghostPost.primary_tag.name}
+                    {data.ghostPage.primary_tag.name}
                   </span>
                 )}
               </span>
-              <h1 className="post-title">{data.ghostPost.title}</h1>
+              <h1 className="post-title">{data.ghostPage.title}</h1>
               <div className="post-meta">
                 <div className="post-meta-avatars">
-                  {data.ghostPost.primary_author.profile_image && (
+                  {data.ghostPage.primary_author.profile_image && (
                     <figure className="post-meta-avatar avatar">
                       <Link
-                        to={`/author/${data.ghostPost.primary_author.slug}`}
+                        to={`/author/${data.ghostPage.primary_author.slug}`}
                         className="author-avatar"
                       >
                         <img
                           className="author-profile-image"
-                          src={data.ghostPost.primary_author.profile_image}
-                          alt={data.ghostPost.primary_author.name}
+                          src={data.ghostPage.primary_author.profile_image}
+                          alt={data.ghostPage.primary_author.name}
                         />
                       </Link>
                     </figure>
                   )}
                 </div>
                 <h4 className="post-meta-author">
-                  {data.ghostPost.primary_author.name}
+                  {data.ghostPage.primary_author.name}
                 </h4>
                 <time dateTime="{{date format='DD-MM-YYYY'}}">
-                  {data.ghostPost.updated_at}
+                  {data.ghostPage.updated_at}
                 </time>{" "}
-                &bull; {data.ghostPost.reading_time} min to read
+                &bull; {data.ghostPage.reading_time} min to read
               </div>
-              {data.ghostPost.feature_image && (
+              {data.ghostPage.feature_image && (
                 <div class="post-cover cover">
                   <img
                     srcSet={
-                      data.ghostPost.localFeatureImage.childImageSharp.fluid
+                      data.ghostPage.localFeatureImage.childImageSharp.fluid
                         .srcSet
                     }
-                    alt={data.ghostPost.title}
+                    alt={data.ghostPage.title}
                   />
                   {/* <Image
                     fluid={
-                      data.ghostPost.localFeatureImage.childImageSharp.fluid
+                      data.ghostPage.localFeatureImage.childImageSharp.fluid
                         .srcSet
                     }
                   /> */}
@@ -121,10 +84,11 @@ const PostTemplate = ({ data, location }) => {
             <article className="post tag-getting-started">
               <div className="inner">
                 <section
-                  ref={postContentRef}
-                  className="post-content"
-                  dangerouslySetInnerHTML={{ __html: data.ghostPost.html }}
-                ></section>
+                  className="post-full-content"
+                  
+                >
+                  <div className="post-content" dangerouslySetInnerHTML={{ __html: data.ghostPage.html }}></div>
+                </section>
 
                 <section className="post-footer">
                   <div className="post-share">
@@ -170,11 +134,11 @@ const PostTemplate = ({ data, location }) => {
                       <span className="hidden">Email</span>
                     </a>
                   </div>
-                  {data.ghostPost.primary_tag && (
+                  {data.ghostPage.primary_tag && (
                     <aside className="post-tags">
                       <span className="post-info-label">Topic</span>
-                      <a href={`/tag/${data.ghostPost.primary_tag.slug}/`}>
-                        {data.ghostPost.primary_tag.name}
+                      <a href={`/tag/${data.ghostPage.primary_tag.slug}/`}>
+                        {data.ghostPage.primary_tag.name}
                       </a>
                     </aside>
                   )}
@@ -230,26 +194,89 @@ const PostTemplate = ({ data, location }) => {
   );
 };
 
-export default PostTemplate;
+export default PageTemplate
 
 export const pageQuery = graphql`
-  query($slug: String, $prev: String, $next: String) {
-    ghostPost(slug: { eq: $slug }) {
+  query($slug: String) {
+    ghostPage(slug: { eq: $slug }) {
       title
-      html
-      codeinjection_styles
-      primary_tag {
+      slug
+      featured
+      feature_image
+      excerpt
+      custom_excerpt
+      visibility
+      # Dates formatted
+      created_at_pretty: created_at(formatString: "DD MMMM, YYYY")
+      published_at_pretty: published_at(formatString: "DD MMMM, YYYY")
+      updated_at_pretty: updated_at(formatString: "DD MMMM, YYYY")
+      # Dates unformatted
+      created_at(formatString: "DD MMMM, YYYY")
+      published_at
+      updated_at(formatString: "MMMM DD YYYY")
+      # SEO
+      meta_title
+      meta_description
+      og_description
+      og_image
+      og_title
+      twitter_description
+      twitter_image
+      twitter_title
+      # Authors
+      authors {
         name
         slug
+        bio
+        # email
+        profile_image
+        twitter
+        facebook
+        website
       }
       primary_author {
         name
-        profile_image
         slug
+        bio
+        # email
+        profile_image
+        twitter
+        facebook
+        website
       }
-      updated_at(formatString: "MMMM DD YYYY")
+      # Tags
+      primary_tag {
+        name
+        slug
+        description
+        feature_image
+        meta_description
+        meta_title
+        visibility
+      }
+      tags {
+        name
+        slug
+        description
+        feature_image
+        meta_description
+        meta_title
+        visibility
+      }
+      # Content
+      plaintext
+      html
+      # Additional fields
+      url
+      canonical_url
+      uuid
+      page
+      codeinjection_foot
+      codeinjection_head
+      codeinjection_styles
+      comment_id
       reading_time
-      feature_image
+      # ImgSharp
       localFeatureImage {
         childImageSharp {
           fluid {
@@ -257,21 +284,6 @@ export const pageQuery = graphql`
           }
         }
       }
-      url
-    }
-
-    prevPost: ghostPost(slug: { eq: $prev }) {
-      title
-      excerpt
-      slug
-      updated_at(formatString: "MMMM DD YYYY")
-    }
-
-    nextPost: ghostPost(slug: { eq: $next }) {
-      title
-      excerpt
-      slug
-      updated_at(formatString: "MMMM DD YYYY")
     }
   }
 `;

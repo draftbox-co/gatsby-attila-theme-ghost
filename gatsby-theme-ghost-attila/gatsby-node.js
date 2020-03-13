@@ -99,7 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Extract query results
   const tags = result.data.allGhostTag.edges;
   const authors = result.data.allGhostAuthor.edges;
-  //   const pages = result.data.allGhostPage.edges;
+  const pages = result.data.allGhostPage.edges;
   const posts = result.data.allGhostPost.edges;
   const postsPerPage = result.data.site.siteMetadata.postsPerPage;
 
@@ -108,6 +108,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const postTemplate = require.resolve("./src/templates/postTemplate.jsx");
   const tagsTemplate = require.resolve(`./src/templates/tagsTemplate.jsx`);
   const authorTemplate = require.resolve(`./src/templates/authorTemplate.jsx`);
+  const pageTemplate = require.resolve(`./src/templates/pageTemplate.jsx`);
 
   // Create author pages
   authors.forEach(({ node }) => {
@@ -204,6 +205,23 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
   });
+
+  pages.forEach(({ node }) => {
+    // This part here defines, that our pages will use
+    // a `/:slug/` permalink.
+    node.url = `/${node.slug}/`
+
+    createPage({
+        path: node.url,
+        component: pageTemplate,
+        context: {
+            // Data passed to context is available
+            // in page queries as GraphQL variables.
+            slug: node.slug,
+        },
+    })
+})
+  
 
   // Create pagination
   paginate({

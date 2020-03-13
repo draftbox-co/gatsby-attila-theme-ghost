@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-theme-ghost-attila`,
+      resolve: `@armada-inc/gatsby-theme-ghost-attila`,
       options: {
         siteConfig: {
           siteUrl: `https://gatsby.ghost.org`, // Site domain. Do not include a trailing slash!
@@ -21,13 +21,13 @@ module.exports = {
         },
         ghostConfig: {
           development: {
-            apiUrl: "https://blog.jabrafan.com",
-            contentApiKey: "f78858ac081c27c54a131d0c18",
-            // version: 'v2'
+            apiUrl: "https://gatsby.ghost.io",
+            contentApiKey: "9cc5c67c358edfdd81455149d0",
+            //version: 'v2'
           },
           production: {
-            apiUrl: "https://blog.jabrafan.com",
-            contentApiKey: "f78858ac081c27c54a131d0c18",
+            apiUrl: "https://gatsby.ghost.io",
+            contentApiKey: "9cc5c67c358edfdd81455149d0",
             // version: 'v2'
           }
         }
