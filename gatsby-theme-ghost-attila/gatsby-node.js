@@ -109,6 +109,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const tagsTemplate = require.resolve(`./src/templates/tagsTemplate.jsx`);
   const authorTemplate = require.resolve(`./src/templates/authorTemplate.jsx`);
   const pageTemplate = require.resolve(`./src/templates/pageTemplate.jsx`);
+  const postAmpTemplate = require.resolve(`./src/templates/postTemplate.amp.jsx`);
 
   // Create author pages
   authors.forEach(({ node }) => {
@@ -221,6 +222,19 @@ exports.createPages = async ({ graphql, actions }) => {
         },
     })
 })
+
+posts.forEach(({ node }, index, array) => {
+  createPage({
+    path: `${node.slug}/amp`,
+    component: postAmpTemplate,
+    context: {
+      slug: node.slug,
+      prev: index !== 0 ? array[index - 1].node.slug : null,
+      next: index !== array.length - 1 ? array[index + 1].node.slug : null,
+      amp: true
+    }
+  });
+});
   
 
   // Create pagination

@@ -19,6 +19,7 @@ const MetaData = ({
     description,
     image,
     location,
+    amp
 }) => {
     const config = settings.site.siteMetadata
     const canonical = url.resolve(config.siteUrl, location.pathname)
@@ -30,6 +31,7 @@ const MetaData = ({
             <ArticleMeta
                 data={ghostPost}
                 canonical={canonical}
+                amp= {amp}
             />
         )
     } else if (ghostTag) {

@@ -14,8 +14,10 @@ const PostCard = ({ post }) => {
                 </h2>
 
                 <span className="post-meta">
-                  By {post.authors.map(author => author.name)} in{" "}
+                  By {post.authors.map(author => author.name)}
                   {post.tags.map((tag, index) => (
+                    <>
+                    in{" "}
                     <Link
                       key={index}
                       className="post-meta-tag"
@@ -23,6 +25,7 @@ const PostCard = ({ post }) => {
                     >
                       {tag.name}
                     </Link>
+                    </>
                   ))}{" "}
                   on{" "}
                   <time dateTime="{{date format='DD-MM-YYYY'}}">

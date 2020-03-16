@@ -10,7 +10,7 @@ import ImageMeta from './ImageMeta'
 
 import { tags as tagsHelper } from '@tryghost/helpers'
 
-const ArticleMetaGhost = ({ data, settings, canonical }) => {
+const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
     const ghostPost = data
     const config = settings.site.siteMetadata
     settings = settings.allGhostSettings.edges[0].node
@@ -63,7 +63,7 @@ const ArticleMetaGhost = ({ data, settings, canonical }) => {
             <Helmet>
                 <title>{ghostPost.meta_title || ghostPost.title}</title>
                 <meta name="description" content={ghostPost.meta_description || ghostPost.excerpt} />
-                <link rel="canonical" href={canonical} />
+                {!amp && <link rel="canonical" href={canonical} />}
 
                 <meta property="og:site_name" content={settings.title} />
                 <meta property="og:type" content="article" />

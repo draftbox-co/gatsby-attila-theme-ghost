@@ -1,0 +1,10 @@
+.amp-img-container {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  margin: 0 auto 3vw auto;
+}
+
+amp-img.contain img {
+object-fit: cover;
+}
