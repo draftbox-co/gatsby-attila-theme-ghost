@@ -12,7 +12,12 @@ module.exports = themeOptions => {
   return {
     siteMetadata: siteConfig,
     plugins: [
-      `gatsby-plugin-sass`,
+      {
+        resolve: `gatsby-plugin-sass`,
+        options: {
+          sassRuleModulesTest: /.*\.module\.s(a|c)ss$/
+        }
+      },
       {
         resolve: `gatsby-plugin-page-creator`,
         options: {
@@ -35,6 +40,22 @@ module.exports = themeOptions => {
             ? ghostConfig.development
             : ghostConfig.production
       },
+      {
+        resolve: `gatsby-transformer-rehype`,
+        options: {
+          filter: node =>
+            node.internal.type === `GhostPost` ||
+            node.internal.type === `GhostPage`,
+          plugins: [
+            {
+              resolve: `gatsby-rehype-prismjs`
+            },
+            {
+              resolve: `gatsby-rehype-ghost-links`
+            }
+          ]
+        }
+      },
       /**
        *  Utility Plugins
        */
@@ -48,84 +69,80 @@ module.exports = themeOptions => {
           display: `minimal-ui`,
           icon: `static/${siteConfig.siteIcon}`,
           legacy: true,
-          query: `
-                    {
-                        allGhostSettings {
-                            edges {
-                                node {
-                                    title
-                                    description
-                                }
-                            }
-                        }
-                    }
-                  `
+          query: `{
+            allGhostSettings {
+              edges {
+                node {
+                  title
+                  description
+                }
+              }
+            }
+          }`
         }
       },
       {
         resolve: `gatsby-plugin-feed`,
         options: {
-          query: `
-                    {
-                        allGhostSettings {
-                            edges {
-                                node {
-                                    title
-                                    description
-                                }
-                            }
-                        }
-                    }
-                  `,
+          query: `{
+            allGhostSettings {
+              edges {
+                node {
+                  title
+                  description
+                }
+              }
+            }
+          }`,
           feeds: [generateRSSFeed(siteConfig)]
         }
       },
       {
         resolve: `gatsby-plugin-advanced-sitemap`,
         options: {
-          query: `
-                    {
-                        allGhostPost {
-                            edges {
-                                node {
-                                    id
-                                    slug
-                                    updated_at
-                                    created_at
-                                    feature_image
-                                }
-                            }
-                        }
-                        allGhostPage {
-                            edges {
-                                node {
-                                    id
-                                    slug
-                                    updated_at
-                                    created_at
-                                    feature_image
-                                }
-                            }
-                        }
-                        allGhostTag {
-                            edges {
-                                node {
-                                    id
-                                    slug
-                                    feature_image
-                                }
-                            }
-                        }
-                        allGhostAuthor {
-                            edges {
-                                node {
-                                    id
-                                    slug
-                                    profile_image
-                                }
-                            }
-                        }
-                    }`,
+          query: `{
+            allGhostPost {
+              edges {
+                node {
+                  id
+                  slug
+                  updated_at
+                  created_at
+                  feature_image
+                }
+              }
+            }
+            allGhostPage {
+              edges {
+                node {
+                  id
+                  slug
+                  updated_at
+                  created_at
+                  feature_image
+                }
+              }
+            }
+            allGhostTag {
+              edges {
+                node {
+                  id
+                  slug
+                  feature_image
+                }
+              }
+            }
+            allGhostAuthor {
+              edges {
+                node {
+                  id
+                  slug
+                  profile_image
+                }
+              }
+            }
+          }
+          `,
           mapping: {
             allGhostPost: {
               sitemap: `posts`
@@ -163,13 +180,13 @@ module.exports = themeOptions => {
       {
         resolve: `gatsby-plugin-amp`,
         options: {
-            canonicalBaseUrl: siteConfig.siteUrl,
-            components: [`amp-form`],
-            excludedPaths: [`/404*`, `/`],
-            pathIdentifier: `amp/`,
-            relAmpHtmlPattern: `{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}`,
-            useAmpClientIdApi: true,
-        },
+          canonicalBaseUrl: siteConfig.siteUrl,
+          components: [`amp-form`],
+          excludedPaths: [`/404*`, `/`],
+          pathIdentifier: `amp/`,
+          relAmpHtmlPattern: `{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}`,
+          useAmpClientIdApi: true
+        }
       }
     ]
   };

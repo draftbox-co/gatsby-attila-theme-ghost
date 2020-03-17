@@ -166,6 +166,18 @@ exports.createPages = async ({ graphql, actions }) => {
         next: index !== array.length - 1 ? array[index + 1].node.slug : null
       }
     });
+
+    createPage({
+      path: `${node.slug}/amp`,
+      component: postAmpTemplate,
+      context: {
+        slug: node.slug,
+        prev: index !== 0 ? array[index - 1].node.slug : null,
+        next: index !== array.length - 1 ? array[index + 1].node.slug : null,
+        amp: true
+      }
+    });
+
   });
 
   tags.forEach(({ node }, i) => {
@@ -222,20 +234,6 @@ exports.createPages = async ({ graphql, actions }) => {
         },
     })
 })
-
-posts.forEach(({ node }, index, array) => {
-  createPage({
-    path: `${node.slug}/amp`,
-    component: postAmpTemplate,
-    context: {
-      slug: node.slug,
-      prev: index !== 0 ? array[index - 1].node.slug : null,
-      next: index !== array.length - 1 ? array[index + 1].node.slug : null,
-      amp: true
-    }
-  });
-});
-  
 
   // Create pagination
   paginate({

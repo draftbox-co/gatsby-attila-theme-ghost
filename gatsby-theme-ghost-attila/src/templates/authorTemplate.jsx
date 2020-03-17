@@ -72,7 +72,7 @@ const AuthorTemplate = ({ data, pageContext }) => {
       <div id="index" className="container">
         <main className="content" role="main">
           {data.allGhostPost.edges.map(({ node }, i) => {
-            return <PostCard post={node} />;
+            return <PostCard key={i} post={node} />;
           })}
         </main>
       </div>

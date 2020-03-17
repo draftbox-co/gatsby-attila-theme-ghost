@@ -29,7 +29,7 @@ const TagsTemplate = ({ data, pageContext }) => {
         <div id="index" className="container">
           <main className="content" role="main">
             {data.allGhostPost.edges.map(({ node }, i) => {
-              return <PostCard post={node} />;
+              return <PostCard post={node} key={i}/>;
             })}
           </main>
         </div>
@@ -46,6 +46,7 @@ export const pageQuery = graphql`
     ghostTag(slug: { eq: $slug }) {
       name
       description
+      postCount
     }
     allGhostPost(
       sort: { order: DESC, fields: [published_at] }

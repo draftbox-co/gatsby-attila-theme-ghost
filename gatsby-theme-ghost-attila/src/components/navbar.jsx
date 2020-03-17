@@ -18,14 +18,20 @@ const Navbar = () => {
           }
         }
       }
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
     }
   `);
 
   const {
-    allGhostSettings: { edges }
+    allGhostSettings: { edges }, site: {siteMetadata}
   } = data;
 
   const siteSettings = edges[0].node;
+  const siteUrl = siteMetadata.siteUrl;
 
   return (
     <>
@@ -40,15 +46,15 @@ const Navbar = () => {
           </span>
           <ul role="navigation" aria-label="Navigation">
             {siteSettings.navigation.map(({ label, url }, i) => {
-              return url.startsWith("/") ? (
+              return url.startsWith("/") || url.startsWith(siteUrl) ? (
                 <li key={i} role="presentation">
-                  <Link to={url} activeClassName="active">
+                  <Link to={url.slice(siteUrl.length, url.length)} activeClassName="active">
                     <span>{label}</span>
                   </Link>
                 </li>
               ) : (
                 <li key={i} role="presentation">
-                  <a href={url}>{label}</a>
+                  <a href={url} target="_blank" rel="noreferrer noopener">{label}</a>
                 </li>
               );
             })}

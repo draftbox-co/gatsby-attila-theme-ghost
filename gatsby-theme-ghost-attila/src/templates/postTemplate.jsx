@@ -99,7 +99,7 @@ const PostTemplate = ({ data, location }) => {
                 &bull; {data.ghostPost.reading_time} min to read
               </div>
               {data.ghostPost.feature_image && (
-                <div class="post-cover cover">
+                <div className="post-cover cover">
                   <img
                     srcSet={
                       data.ghostPost.localFeatureImage.childImageSharp.fluid
@@ -123,7 +123,7 @@ const PostTemplate = ({ data, location }) => {
                 <section
                   ref={postContentRef}
                   className="post-content"
-                  dangerouslySetInnerHTML={{ __html: data.ghostPost.html }}
+                  dangerouslySetInnerHTML={{ __html: data.ghostPost.rehypedHTML[0].html }}
                 ></section>
 
                 <section className="post-footer">
@@ -237,6 +237,12 @@ export const pageQuery = graphql`
     ghostPost(slug: { eq: $slug }) {
       title
       html
+      published_at
+      rehypedHTML: children {
+        ... on HtmlRehype {
+          html
+        }
+      }
       codeinjection_styles
       primary_tag {
         name
@@ -258,6 +264,7 @@ export const pageQuery = graphql`
         }
       }
       url
+      excerpt
     }
 
     prevPost: ghostPost(slug: { eq: $prev }) {

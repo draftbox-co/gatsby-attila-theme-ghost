@@ -1,8 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-// import Layout from "../components/Layout";
-import { useEffect } from "react";
-import Helmet from "react-helmet";
+import Layout from "../components/Layout";
 import { MetaData } from "../components/meta";
 
 import './../amp-styles/post.amp.css';
@@ -23,7 +21,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
       <MetaData data={data} location={location} amp={pageContext.amp} type="article" />
 
       <div className={data.ghostPost.feature_image ? "cover-active" : ""}>
-        {/* <Layout> */}
+        <Layout>
           <header
             className={
               "post-header " + (data.ghostPost.feature_image ? "has-cover" : "")
@@ -47,11 +45,12 @@ const PostTemplate = ({ data, location, pageContext }) => {
                         to={`/author/${data.ghostPost.primary_author.slug}`}
                         className="author-avatar"
                       >
-                        <img
+                        <amp-img class="author-profile-image" layout="fill" src={data.ghostPost.primary_author.profile_image} alt={data.ghostPost.primary_author.name} />
+                        {/* <img
                           className="author-profile-image"
                           src={data.ghostPost.primary_author.profile_image}
                           alt={data.ghostPost.primary_author.name}
-                        />
+                        /> */}
                       </Link>
                     </figure>
                   )}
@@ -66,14 +65,14 @@ const PostTemplate = ({ data, location, pageContext }) => {
               </div>
               {data.ghostPost.feature_image && (
                 <div class="post-cover cover">
-                  <img
+                  {/* <img
                     srcSet={
                       data.ghostPost.localFeatureImage.childImageSharp.fluid
                         .srcSet
                     }
                     alt={data.ghostPost.title}
                     
-                  />
+                  /> */}
                   <amp-img srcSet={data.ghostPost.localFeatureImage.childImageSharp.fluid
                         .srcSet} class="contain" layout="fill" alt={data.ghostPost.title} />
                   {/* <Image
@@ -192,7 +191,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
               </div>
             </article>
           </main>
-        {/* </Layout> */}
+        </Layout>
       </div>
     </>
   );

@@ -87,7 +87,7 @@ const PageTemplate = ({ data, location }) => {
                   className="post-full-content"
                   
                 >
-                  <div className="post-content" dangerouslySetInnerHTML={{ __html: data.ghostPage.html }}></div>
+                  <div className="post-content" dangerouslySetInnerHTML={{ __html: data.ghostPage.rehypedHTML[0].html }}></div>
                 </section>
 
                 <section className="post-footer">
@@ -266,6 +266,11 @@ export const pageQuery = graphql`
       # Content
       plaintext
       html
+      rehypedHTML: children {
+        ... on HtmlRehype {
+          html
+        }
+      }
       # Additional fields
       url
       canonical_url

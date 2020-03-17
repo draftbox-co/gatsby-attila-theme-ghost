@@ -6,10 +6,12 @@ const Footer = () => {
     query {
       ghostSettings {
         title
+        codeinjection_foot
       }
     }
   `);
   return (
+    <>
     <div className="nav-footer">
       <nav className="nav-wrapper">
         <span className="nav-copy">
@@ -22,6 +24,7 @@ const Footer = () => {
         </span>
       </nav>
     </div>
+    </>
   );
 };
 
