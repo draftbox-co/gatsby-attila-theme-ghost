@@ -178,14 +178,16 @@ module.exports = themeOptions => {
         }
       },
       {
-        resolve: `gatsby-plugin-amp`,
+        resolve: `gatsby-plugin-amp-test`,
         options: {
           canonicalBaseUrl: siteConfig.siteUrl,
           components: [`amp-form`],
           excludedPaths: [`/404*`, `/`],
           pathIdentifier: `amp/`,
           relAmpHtmlPattern: `{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}`,
-          useAmpClientIdApi: true
+          useAmpClientIdApi: true,
+          dirName: __dirname,
+          themePath: `src/amp-styles/post.amp.css`
         }
       }
     ]

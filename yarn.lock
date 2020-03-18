@@ -5732,6 +5732,16 @@ gatsby-plugin-advanced-sitemap@^1.5.1:
     moment "^2.24.0"
     xml "^1.0.1"
 
+gatsby-plugin-amp-test@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-amp-test/-/gatsby-plugin-amp-test-0.2.4.tgz#9c620b563cb8e5ffba09e155c51105be1516406d"
+  integrity sha512-ZsWBPSzDSBw4RuErdSx+/4xS5QFtIdR2zCByJV6xp17XnAzHapma0ythp+KOu2WuOoWNUfFHRhIZ6jSauKTM/A==
+  dependencies:
+    jsdom "^13.0.0"
+    lodash.flattendeep "^4.4.0"
+    minimatch "^3.0.4"
+    react "^16.6.1"
+
 gatsby-plugin-amp@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-amp/-/gatsby-plugin-amp-0.2.2.tgz#932f3e0240ec5dd21f83362ffa96c6ae1396b088"
