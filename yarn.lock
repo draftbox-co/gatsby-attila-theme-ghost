@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@armada-inc/gatsby-plugin-amp@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@armada-inc/gatsby-plugin-amp/-/gatsby-plugin-amp-0.2.3.tgz#27b0796dd2851644238e45b4ab03ef74e4bcaa46"
+  integrity sha512-UuZkWSM7Kzvk8Zuu8+hmLpfNm9e7DMfTm1WYr6qWssOvQpxmFm3VNjIdJPrlBo4II7cmeMw11z4z+gNkKF9d6A==
+  dependencies:
+    jsdom "^13.0.0"
+    lodash.flattendeep "^4.4.0"
+    minimatch "^3.0.4"
+    react "^16.6.1"
+
 "@babel/code-frame@7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -5731,26 +5741,6 @@ gatsby-plugin-advanced-sitemap@^1.5.1:
     lodash "4.17.15"
     moment "^2.24.0"
     xml "^1.0.1"
-
-gatsby-plugin-amp-test@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-amp-test/-/gatsby-plugin-amp-test-0.2.4.tgz#9c620b563cb8e5ffba09e155c51105be1516406d"
-  integrity sha512-ZsWBPSzDSBw4RuErdSx+/4xS5QFtIdR2zCByJV6xp17XnAzHapma0ythp+KOu2WuOoWNUfFHRhIZ6jSauKTM/A==
-  dependencies:
-    jsdom "^13.0.0"
-    lodash.flattendeep "^4.4.0"
-    minimatch "^3.0.4"
-    react "^16.6.1"
-
-gatsby-plugin-amp@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-amp/-/gatsby-plugin-amp-0.2.2.tgz#932f3e0240ec5dd21f83362ffa96c6ae1396b088"
-  integrity sha512-JmmpFvb5HGnehJv+omqfaU3q1llYZ1L68329lCfGmX1BbjEBA0i5qftY7vhfAfOSOrk6+th3VANYRWPly1HIOg==
-  dependencies:
-    jsdom "^13.0.0"
-    lodash.flattendeep "^4.4.0"
-    minimatch "^3.0.4"
-    react "^16.6.1"
 
 gatsby-plugin-catch-links@^2.1.26:
   version "2.1.28"
@@ -11789,7 +11779,7 @@ shallowequal@^1.0.1, shallowequal@^1.1.0:
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
 
-sharp@0.23.4, sharp@^0.23.4:
+sharp@^0.23.4:
   version "0.23.4"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.23.4.tgz#ca36067cb6ff7067fa6c77b01651cb9a890f8eb3"
   integrity sha512-fJMagt6cT0UDy9XCsgyLi0eiwWWhQRxbwGmqQT6sY8Av4s0SVsT/deg8fobBQCTDU5iXRgz0rAeXoE2LBZ8g+Q==
