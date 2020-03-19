@@ -178,7 +178,7 @@ module.exports = themeOptions => {
         }
       },
       {
-        resolve: `gatsby-plugin-amp-test`,
+        resolve: `@armada-inc/gatsby-plugin-amp`,
         options: {
           canonicalBaseUrl: siteConfig.siteUrl,
           components: [`amp-form`],

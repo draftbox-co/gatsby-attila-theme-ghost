@@ -1,7 +1,7 @@
 {
   "name": "@armada-inc/gatsby-theme-ghost-attila",
   "description": "A Gatsby theme plugin for creating blogs from headless Ghost CMS.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "author": "Armada Intelligence Inc",
   "homepage": "https://github.com/armada-inc/gatsby-attila-theme-ghost",
@@ -63,7 +63,7 @@
     "gatsby-background-image": "^0.10.2",
     "gatsby-image": "^2.2.41",
     "gatsby-plugin-advanced-sitemap": "^1.5.1",
-    "gatsby-plugin-amp-test": "^0.2.5",
+    "@armada-inc/gatsby-plugin-amp": "^0.2.3",
     "gatsby-plugin-catch-links": "^2.1.26",
     "gatsby-plugin-feed": "^2.3.27",
     "gatsby-plugin-force-trailing-slashes": "^1.0.4",
