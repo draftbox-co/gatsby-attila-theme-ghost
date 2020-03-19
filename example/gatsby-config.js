@@ -4,7 +4,7 @@ module.exports = {
       resolve: `@armada-inc/gatsby-theme-ghost-attila`,
       options: {
         siteConfig: {
-          siteUrl: `https://gatsby.ghost.org`, // Site domain. Do not include a trailing slash!
+          siteUrl: `https://blog.getarmada.app`, // Site domain. Do not include a trailing slash!
 
           postsPerPage: 12, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 
@@ -21,14 +21,14 @@ module.exports = {
         },
         ghostConfig: {
           development: {
-            apiUrl: "https://gatsby.ghost.io",
-            contentApiKey: "9cc5c67c358edfdd81455149d0",
-            //version: 'v2'
+            apiUrl: "https://blog.getarmada.app",
+            contentApiKey: "6eca800ace9ef5c58736c65b13",
+            version: 'v2'
           },
           production: {
-            apiUrl: "https://gatsby.ghost.io",
-            contentApiKey: "9cc5c67c358edfdd81455149d0",
-            // version: 'v2'
+            apiUrl: "https://blog.getarmada.app",
+            contentApiKey: "6eca800ace9ef5c58736c65b13",
+            version: 'v2'
           }
         }
       }

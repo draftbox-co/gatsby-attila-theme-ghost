@@ -88,6 +88,10 @@ exports.createPages = async ({ graphql, actions }) => {
           postsPerPage
         }
       }
+
+      ghostSettings {
+        title
+      }
     }
   `);
 
@@ -102,13 +106,17 @@ exports.createPages = async ({ graphql, actions }) => {
   const pages = result.data.allGhostPage.edges;
   const posts = result.data.allGhostPost.edges;
   const postsPerPage = result.data.site.siteMetadata.postsPerPage;
+  const websiteTitle = result.data.ghostSettings.title;
 
-    // Load templates
+  // Load templates
   const indexTemplate = require.resolve(`./src/templates/indexTemplate.jsx`);
   const postTemplate = require.resolve("./src/templates/postTemplate.jsx");
   const tagsTemplate = require.resolve(`./src/templates/tagsTemplate.jsx`);
   const authorTemplate = require.resolve(`./src/templates/authorTemplate.jsx`);
   const pageTemplate = require.resolve(`./src/templates/pageTemplate.jsx`);
+  const postAmpTemplate = require.resolve(
+    `./src/templates/postTemplate.amp.jsx`
+  );
 
   // Create author pages
   authors.forEach(({ node }) => {
@@ -165,6 +173,16 @@ exports.createPages = async ({ graphql, actions }) => {
         next: index !== array.length - 1 ? array[index + 1].node.slug : null
       }
     });
+
+    createPage({
+      path: `${node.slug}/amp`,
+      component: postAmpTemplate,
+      context: {
+        slug: node.slug,
+        title: websiteTitle,
+        amp: true
+      }
+    });
   });
 
   tags.forEach(({ node }, i) => {
@@ -209,19 +227,18 @@ exports.createPages = async ({ graphql, actions }) => {
   pages.forEach(({ node }) => {
     // This part here defines, that our pages will use
     // a `/:slug/` permalink.
-    node.url = `/${node.slug}/`
+    node.url = `/${node.slug}/`;
 
     createPage({
-        path: node.url,
-        component: pageTemplate,
-        context: {
-            // Data passed to context is available
-            // in page queries as GraphQL variables.
-            slug: node.slug,
-        },
-    })
-})
-  
+      path: node.url,
+      component: pageTemplate,
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        slug: node.slug
+      }
+    });
+  });
 
   // Create pagination
   paginate({
