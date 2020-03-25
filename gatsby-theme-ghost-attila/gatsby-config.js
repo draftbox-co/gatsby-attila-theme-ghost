@@ -9,6 +9,20 @@ module.exports = themeOptions => {
   const siteConfig = themeOptions.siteConfig || siteConfigDefaults;
   const ghostConfig = themeOptions.ghostConfig || ghostConfigDefaults;
 
+  let analyticsConfig = [];
+
+  if (siteConfig.gtrackId) {
+    analyticsConfig.push({
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: siteConfig.gtrackId,
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false
+      }
+    });
+  }
+
   return {
     siteMetadata: siteConfig,
     plugins: [
@@ -189,7 +203,8 @@ module.exports = themeOptions => {
           dirName: __dirname,
           themePath: `src/amp-styles/post.amp.css`
         }
-      }
+      },
+      ...analyticsConfig
     ]
   };
 };
