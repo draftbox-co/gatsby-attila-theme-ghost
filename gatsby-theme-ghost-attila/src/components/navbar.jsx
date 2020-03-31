@@ -27,7 +27,8 @@ const Navbar = () => {
   `);
 
   const {
-    allGhostSettings: { edges }, site: {siteMetadata}
+    allGhostSettings: { edges },
+    site: { siteMetadata }
   } = data;
 
   const siteSettings = edges[0].node;
@@ -48,38 +49,43 @@ const Navbar = () => {
             {siteSettings.navigation.map(({ label, url }, i) => {
               return url.startsWith("/") || url.startsWith(siteUrl) ? (
                 <li key={i} role="presentation">
-                  <Link to={url.slice(siteUrl.length, url.length)} activeClassName="active">
+                  <Link
+                    to={url.slice(siteUrl.length, url.length)}
+                    activeClassName="active"
+                  >
                     <span>{label}</span>
                   </Link>
                 </li>
               ) : (
                 <li key={i} role="presentation">
-                  <a href={url} target="_blank" rel="noreferrer noopener">{label}</a>
+                  <a href={url} target="_blank" rel="noreferrer noopener">
+                    {label}
+                  </a>
                 </li>
               );
             })}
           </ul>
           <ul className="side-nav">
-            <li className="nav-twitter">
-              <a
-                href={`https://facebook.com/${siteSettings.facebook}`}
-                title="Twitter"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <i className="icon icon-twitter"></i>
-                <span>Twitter</span>
-              </a>
-            </li>
             <li className="nav-facebook">
               <a
-                href={`https://twitter.com/${siteSettings.twitter}`}
+                href={`https://facebook.com/${siteSettings.facebook}`}
                 title="Facebook"
                 target="_blank"
                 rel="noreferrer noopener"
               >
                 <i className="icon icon-facebook"></i>
                 <span>Facebook</span>
+              </a>
+            </li>
+            <li className="nav-twitter">
+              <a
+                href={`https://twitter.com/${siteSettings.twitter}`}
+                title="Twitter"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <i className="icon icon-twitter"></i>
+                <span>Twitter</span>
               </a>
             </li>
           </ul>
