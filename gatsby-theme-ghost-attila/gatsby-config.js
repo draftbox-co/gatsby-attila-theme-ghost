@@ -191,18 +191,21 @@ module.exports = themeOptions => {
           postCssPlugins: [require(`cssnano`)()]
         }
       },
+      // {
+      //   resolve: `@armada-inc/gatsby-plugin-amp`,
+      //   options: {
+      //     canonicalBaseUrl: siteConfig.siteUrl,
+      //     components: [`amp-form`],
+      //     excludedPaths: [`/404*`, `/`],
+      //     pathIdentifier: `amp/`,
+      //     relAmpHtmlPattern: `{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}`,
+      //     useAmpClientIdApi: true,
+      //     dirName: __dirname,
+      //     themePath: `src/amp-styles/post.amp.css`
+      //   }
+      // },
       {
-        resolve: `@armada-inc/gatsby-plugin-amp`,
-        options: {
-          canonicalBaseUrl: siteConfig.siteUrl,
-          components: [`amp-form`],
-          excludedPaths: [`/404*`, `/`],
-          pathIdentifier: `amp/`,
-          relAmpHtmlPattern: `{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}`,
-          useAmpClientIdApi: true,
-          dirName: __dirname,
-          themePath: `src/amp-styles/post.amp.css`
-        }
+        resolve: require.resolve(`./plugins/gatsby-form-armada`)
       },
       ...analyticsConfig
     ]

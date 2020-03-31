@@ -10,6 +10,10 @@ const Disqus = props => {
 
   return (
     <div>
+      <form action="/" armada="true">
+        <input type="text" />
+        <button type="submit">Submit</button>
+      </form>
       <DiscussionEmbed {...disqusConfig} />
     </div>
   );
