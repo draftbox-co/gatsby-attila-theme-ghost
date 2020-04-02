@@ -23,12 +23,12 @@ module.exports = {
           development: {
             apiUrl: "https://blog.getarmada.app",
             contentApiKey: "6eca800ace9ef5c58736c65b13",
-            version: 'v2'
+            version: "v2"
           },
           production: {
             apiUrl: "https://blog.getarmada.app",
             contentApiKey: "6eca800ace9ef5c58736c65b13",
-            version: 'v2'
+            version: "v2"
           }
         }
       }

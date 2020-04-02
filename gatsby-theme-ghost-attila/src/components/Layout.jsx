@@ -5,8 +5,6 @@ import Footer from "./footer";
 import "prismjs/themes/prism.css";
 import { ArmadaFormsProvider } from "../context/form-context";
 
-
-
 const Layout = props => {
   return (
     <>

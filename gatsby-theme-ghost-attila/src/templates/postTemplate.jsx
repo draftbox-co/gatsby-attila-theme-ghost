@@ -5,8 +5,9 @@ import { useEffect } from "react";
 import Helmet from "react-helmet";
 import { MetaData } from "../components/meta";
 import SubscribeForm from "../components/subscribe-form";
+import Disqus from "../components/disqus";
 
-const PostTemplate = ({ data, location }) => {
+const PostTemplate = ({ data, location, pageContext }) => {
   const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPost.title}&url=${data.ghostPost.url}`;
 
   const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${data.ghostPost.url}`;
@@ -226,6 +227,9 @@ const PostTemplate = ({ data, location }) => {
                 </aside>
               </div>
             </article>
+            <div className="inner" style={{ marginTop: "20px" }}>
+              <Disqus slug={pageContext.slug} title={data.ghostPost.title} />
+            </div>
           </main>
           <SubscribeForm />
         </Layout>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "../hook/useForm";
 
 const SubscribeForm = () => {
-  const [{ handleSubmit, submitting, succeeded, errors }] = useForm(
+  const [{ handleSubmit, submitting, succeeded }] = useForm(
     "subscribe"
   );
 

@@ -97,7 +97,8 @@ const Navbar = () => {
         </nav>
         <div className="nav-wrapper-control">
           <div className="inner">
-            <a
+            <a 
+              href="#0"
               className="nav-menu"
               onClick={e => document.body.classList.toggle("menu-active")}
             >

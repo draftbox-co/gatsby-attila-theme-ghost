@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import Layout from "../components/Layout";
 import { MetaData } from "../components/meta";
 
 const PostTemplate = ({ data, location, pageContext }) => {
