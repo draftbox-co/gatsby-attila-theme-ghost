@@ -47,7 +47,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      allGhostPost(sort: { order: ASC, fields: published_at }) {
+      allGhostPost(
+        sort: { order: ASC, fields: published_at }
+        filter: { slug: { ne: "data-schema" } }
+      ) {
         edges {
           node {
             slug
