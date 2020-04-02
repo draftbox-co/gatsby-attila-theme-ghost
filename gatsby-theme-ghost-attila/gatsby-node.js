@@ -23,8 +23,6 @@ exports.onCreateNode = async ({
   const { createNode } = actions;
 
   // Download image and create a File node with gatsby-transformer-sharp.
-
-  console.log(node.feature_image, "this is image node");
   if (node.feature_image) {
     const fileNode = await createRemoteFileNode({
       url: node.feature_image,

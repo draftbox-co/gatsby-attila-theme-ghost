@@ -9,7 +9,6 @@ export const useForm = formKey => {
 
   const handleSubmit = async data => {
     setSubmitting(true);
-    console.log(formKey);
 
     try {
       let formHeaders = new Headers();
@@ -32,13 +31,6 @@ export const useForm = formKey => {
     } catch (error) {
       setErrors([{ error: `error occured submitting request: ${formKey}` }]);
     }
-
-    // setTimeout(() => {
-    //   setSubmitting(false);
-    //   setSucceeded(true);
-    // }, 5000);
-    // console.log(client, "client");
-    // console.log(data, formKey, client);
   };
 
   return [{ submitting, errors, succeeded, handleSubmit }];
