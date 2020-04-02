@@ -67,6 +67,8 @@ const ContactForm = () => {
                 <br />
                 <label htmlFor="message">Message</label>
                 <textarea
+                  required
+                  maxLength="180"
                   rows="4"
                   onChange={e => handleChange(e.target.id, e.target.value)}
                   id="message"

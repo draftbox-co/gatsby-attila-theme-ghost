@@ -5,10 +5,12 @@ import Footer from "./footer";
 import "prismjs/themes/prism.css";
 import { ArmadaFormsProvider } from "../context/form-context";
 
+
+
 const Layout = props => {
   return (
     <>
-      <ArmadaFormsProvider client="armada-form">
+      <ArmadaFormsProvider client={process.env.FORM_URL}>
         <Navbar />
         {props.children}
         <Footer />
