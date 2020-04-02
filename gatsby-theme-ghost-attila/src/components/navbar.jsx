@@ -58,6 +58,11 @@ const Navbar = () => {
                 </li>
               );
             })}
+            <li role="presentation">
+              <Link to="/contact">
+                <span>Contact us</span>
+              </Link>
+            </li>
           </ul>
           <ul className="side-nav">
             <li className="nav-twitter">
