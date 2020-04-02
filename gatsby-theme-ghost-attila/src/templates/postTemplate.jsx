@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import { useEffect } from "react";
 import Helmet from "react-helmet";
 import { MetaData } from "../components/meta";
+import SubscribeForm from "../components/subscribe-form";
 
 const PostTemplate = ({ data, location }) => {
   const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPost.title}&url=${data.ghostPost.url}`;
@@ -226,6 +227,7 @@ const PostTemplate = ({ data, location }) => {
               </div>
             </article>
           </main>
+          <SubscribeForm />
         </Layout>
       </div>
     </>
