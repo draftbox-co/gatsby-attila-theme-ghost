@@ -8,7 +8,7 @@ import { ArmadaFormsProvider } from "../context/form-context";
 const Layout = props => {
   return (
     <>
-      <ArmadaFormsProvider client={process.env.FORM_URL}>
+      <ArmadaFormsProvider client={process.env.GATSBY_FORM_URL}>
         <Navbar />
         {props.children}
         <Footer />
