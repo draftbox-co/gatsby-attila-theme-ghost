@@ -1,5 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import rssLogo from "../images/rss.svg";
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -12,18 +13,20 @@ const Footer = () => {
   `);
   return (
     <>
-    <div className="nav-footer">
-      <nav className="nav-wrapper">
-        <span className="nav-copy">
-          {data.ghostSettings.title} &copy; {new Date().getFullYear()}
-        </span>
+      <div className="nav-footer">
+        <nav className="nav-wrapper">
+          <span className="nav-copy">
+            {data.ghostSettings.title} &copy; {new Date().getFullYear()}
+          </span>
 
-        <span className="nav-credits">
-          Published with <a href="https://ghost.org">Ghost</a> &bull; Theme{" "}
-          <a href="https://github.com/zutrinken/attila">Attila</a>
-        </span>
-      </nav>
-    </div>
+          <span className="nav-credits">
+            Made with DraftBox &bull;{" "}
+            <a href="/rss">
+              RSS <img style={{height: '10px'}} src={rssLogo} alt="" />
+            </a>
+          </span>
+        </nav>
+      </div>
     </>
   );
 };
