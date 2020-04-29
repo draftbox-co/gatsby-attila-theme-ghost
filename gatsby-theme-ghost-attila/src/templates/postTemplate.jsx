@@ -126,7 +126,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
                   ref={postContentRef}
                   className="post-content"
                   dangerouslySetInnerHTML={{
-                    __html: data.ghostPost.rehypedHTML.html
+                    __html: data.ghostPost.rehypedHTML.html,
                   }}
                 ></section>
 
@@ -248,6 +248,19 @@ export const pageQuery = graphql`
       published_at
       rehypedHTML: childHtmlRehype {
         html
+      }
+      og_title
+      og_description
+      feature_image
+      excerpt
+      twitter_title
+      twitter_description
+      meta_title
+      meta_description
+      tags {
+        name
+        slug
+        visibility
       }
       codeinjection_styles
       primary_tag {
