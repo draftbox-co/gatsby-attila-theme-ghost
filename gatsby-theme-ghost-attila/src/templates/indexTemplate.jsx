@@ -33,6 +33,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          uuid
           title
           url
           updated_at(formatString: "MMMM DD YYYY")
@@ -45,8 +46,8 @@ export const pageQuery = graphql`
             slug
           }
           excerpt
-          reading_time
           slug
+          readingTime
         }
       }
     }

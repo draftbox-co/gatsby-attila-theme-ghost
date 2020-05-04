@@ -38,13 +38,13 @@ const ContactForm = () => {
       <main className="content">
         <div className="inner">
           {succeeded && (
-            <div className="post-title"> Message Sent Successfully</div>
+            <div className="post-title">We’ll get in touch with you soon.</div>
           )}
           {!succeeded && (
             <>
-              <span className="post-info">
+              {/* <span className="post-info">
                 <span className="post-type">Contact us</span>
-              </span>
+              </span> */}
               <div className="post-title">Contact Us</div>
               <form className="form-content" onSubmit={e => handleSubmit(e)}>
                 <div>
@@ -53,6 +53,7 @@ const ContactForm = () => {
                     onChange={e => handleChange(e.target.id, e.target.value)}
                     id="name"
                     type="text"
+                    placeholder="Your name (optional)"
                   />
                 </div>
                 <br />
@@ -63,6 +64,7 @@ const ContactForm = () => {
                     required
                     id="email"
                     type="email"
+                    placeholder="Your email address"
                   />
                 </div>
                 <br />
@@ -73,6 +75,7 @@ const ContactForm = () => {
                   rows="4"
                   onChange={e => handleChange(e.target.id, e.target.value)}
                   id="message"
+                  placeholder="Your message"
                 />
                 <br />
                 <button disabled={submitting} type="submit">

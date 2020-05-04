@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 const PostCard = ({ post }) => {
   return (
-    <div id="index" className="container">
+    <div id={post.uuid} className="container">
       <main className="content" role="main">
         <div>
           <article className="post tag-getting-started">
@@ -36,6 +36,8 @@ const PostCard = ({ post }) => {
                   <time dateTime="{{date format='DD-MM-YYYY'}}">
                     {post.updated_at}
                   </time>
+                  {" "}
+                  &bull; {post.readingTime} 
                 </span>
                 <p className="post-excerpt">{post.excerpt}&hellip;</p>
               </div>

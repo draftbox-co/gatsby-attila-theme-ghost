@@ -37,7 +37,7 @@ const AuthorMeta = ({ data, settings, canonical }) => {
 
     return (
         <>
-            <Helmet>
+            <Helmet htmlAttributes={{"lang": "en"}}>
                 <title>{title}</title>
                 <meta name="description" content={description} />
                 <link rel="canonical" href={canonical} />

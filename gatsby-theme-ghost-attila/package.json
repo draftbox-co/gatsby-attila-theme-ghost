@@ -41,12 +41,12 @@
     "eslint": "^6.8.0",
     "eslint-plugin-ghost": "^1.0.0",
     "eslint-plugin-react": "^7.18.3",
-    "gatsby": "^2.19.22",
+    "gatsby": "2.20.24",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "peerDependencies": {
-    "gatsby": "^2.19.22",
+    "gatsby": "2.20.24",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
@@ -85,6 +85,7 @@
     "node-sass": "^4.13.1",
     "prismjs": "^1.19.0",
     "react-helmet": "^5.2.1",
+    "reading-time": "^1.2.0",
     "styled-components": "^5.0.1"
   }
 }

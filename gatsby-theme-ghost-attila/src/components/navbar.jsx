@@ -11,6 +11,7 @@ const Navbar = () => {
             twitter
             facebook
             cover_image
+            title
             navigation {
               label
               url
@@ -40,7 +41,7 @@ const Navbar = () => {
         <nav className="nav-wrapper">
           <span className="logo">
             {siteSettings.logo && (
-              <Link to="/">
+              <Link to="/" title={siteSettings.title} aria-label={siteSettings.title}>
                 <img src={siteSettings.logo} alt="" />
               </Link>
             )}
@@ -50,7 +51,11 @@ const Navbar = () => {
               return url.startsWith("/") || url.startsWith(siteUrl) ? (
                 <li key={i} role="presentation">
                   <Link
-                    to={url.slice(siteUrl.length, url.length)}
+                    to={`${
+                      url.startsWith("/")
+                        ? url
+                        : url.slice(siteUrl.length, url.length)
+                    }`}
                     activeClassName="active"
                   >
                     <span>{label}</span>
@@ -66,7 +71,7 @@ const Navbar = () => {
             })}
             <li role="presentation">
               <Link to="/contact">
-                <span>Contact us</span>
+                <span>Contact Us</span>
               </Link>
             </li>
           </ul>

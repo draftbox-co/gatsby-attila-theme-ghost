@@ -16,7 +16,7 @@ const PageTemplate = ({ data, location }) => {
   return (
     <>
       <MetaData data={data} location={location} type="article" />
-      <Helmet>
+      <Helmet htmlAttributes={{"lang": "en"}}>
         <style type="text/css">{`${data.ghostPage.codeinjection_styles}`}</style>
       </Helmet>
       <div className={data.ghostPage.feature_image ? "cover-active" : ""}>
@@ -59,7 +59,7 @@ const PageTemplate = ({ data, location }) => {
                 <time dateTime="{{date format='DD-MM-YYYY'}}">
                   {data.ghostPage.updated_at}
                 </time>{" "}
-                &bull; {data.ghostPage.reading_time} min to read
+                &bull; {data.ghostPage.readingTime}
               </div>
               {data.ghostPage.feature_image && (
                 <div class="post-cover cover">
@@ -280,7 +280,7 @@ export const pageQuery = graphql`
       codeinjection_head
       codeinjection_styles
       comment_id
-      reading_time
+      readingTime
       # ImgSharp
       localFeatureImage {
         childImageSharp {

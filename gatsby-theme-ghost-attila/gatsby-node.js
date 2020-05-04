@@ -1,11 +1,39 @@
 const _ = require(`lodash`);
 const { paginate } = require(`gatsby-awesome-pagination`);
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
+const readingTime = require('reading-time');
 
 /**
  * Here is the place where Gatsby creates the URLs for all the
  * posts, tags, pages and authors that we fetched from the Ghost site.
  */
+
+exports.createSchemaCustomization = ({ actions, schema }) => {
+  const { createFieldExtension, createTypes } = actions;
+  createFieldExtension({
+    name: "readingTime",
+    extend(options, prevFieldConfig) {
+      return {
+        resolve(source) {
+          const readingTimeValue = readingTime(source.html);
+          return readingTimeValue.text;
+        }
+      };
+    }
+  });
+
+  createTypes(`
+    type GhostPost implements Node {
+      readingTime: String @readingTime
+    }
+  `);
+
+  createTypes(`
+    type GhostPage implements Node {
+      readingTime: String @readingTime
+    }
+  `);
+};
 
 exports.onCreateNode = async ({
   node,

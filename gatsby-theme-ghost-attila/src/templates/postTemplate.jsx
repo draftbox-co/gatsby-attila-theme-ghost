@@ -45,7 +45,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
   return (
     <>
       <MetaData data={data} location={location} type="article" />
-      <Helmet>
+      <Helmet htmlAttributes={{"lang": "en"}}>
         <style type="text/css">{`${data.ghostPost.codeinjection_styles}`}</style>
       </Helmet>
       <div className={data.ghostPost.feature_image ? "cover-active" : ""}>
@@ -98,7 +98,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
                 <time dateTime="{{date format='DD-MM-YYYY'}}">
                   {data.ghostPost.updated_at}
                 </time>{" "}
-                &bull; {data.ghostPost.reading_time} min to read
+                &bull; {data.ghostPost.readingTime}
               </div>
               {data.ghostPost.feature_image && (
                 <div className="post-cover cover">
@@ -273,7 +273,7 @@ export const pageQuery = graphql`
         slug
       }
       updated_at(formatString: "MMMM DD YYYY")
-      reading_time
+      readingTime
       feature_image
       localFeatureImage {
         childImageSharp {

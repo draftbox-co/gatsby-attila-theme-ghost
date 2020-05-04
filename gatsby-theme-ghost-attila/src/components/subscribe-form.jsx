@@ -1,8 +1,36 @@
 import React from "react";
 import { useState } from "react";
 import { useForm } from "../hook/useForm";
+import { useStaticQuery, graphql } from "gatsby";
 
 const SubscribeForm = () => {
+
+  const data = useStaticQuery(graphql`
+    query {
+      allGhostSettings {
+        edges {
+          node {
+            logo
+            title
+            twitter
+            facebook
+            cover_image
+            description
+            navigation {
+              label
+              url
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const {
+    allGhostSettings: { edges }
+  } = data;
+
+  const siteSettings = edges[0].node;
   const [{ handleSubmit, submitting, succeeded }] = useForm(
     "subscribe"
   );
@@ -18,20 +46,20 @@ const SubscribeForm = () => {
     <div className="subscribe-form">
       <form onSubmit={e => onSubmit(e)}>
         {succeeded && (
-          <h1 className="subscribe-title">Subscribed successfully</h1>
+          <h1 className="subscribe-title">You’ve successfully subscribed to {siteSettings.title}</h1>
         )}
         {!succeeded && (
           <>
-            <h1 className="subscribe-title">Subscribe for new updates</h1>
+            <h1 className="subscribe-title">Subscribe to {siteSettings.title}</h1>
             <p className="subscribe-description">
-              Subscribe to my email newsletter to receive useful articles and
-              special offers. <br /> This monthly email is sent out on the first
-              of every month.
+                Get the latest posts delivered right to your inbox.
             </p>
             <div>
+            <label className="hidden" htmlFor="email">Email</label>
               <input
                 onChange={e => setEmail(e.target.value)}
                 required
+                placeholder="hello@example.com"
                 id="email"
                 type="email"
               />

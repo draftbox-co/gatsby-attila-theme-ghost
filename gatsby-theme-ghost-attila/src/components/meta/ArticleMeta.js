@@ -70,7 +70,7 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
 
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{"lang": "en"}}>
         <title>{ghostPost.meta_title || ghostPost.title}</title>
         {!amp && <link rel="ampHtml" href={`${canonical}/amp`} />}
         <meta

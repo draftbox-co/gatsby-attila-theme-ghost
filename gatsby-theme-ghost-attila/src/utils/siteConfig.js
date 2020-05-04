@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: `https://gatsby.ghost.org`, // Site domain. Do not include a trailing slash!
+  siteUrl: `https://eloquent-bhaskara-183237.netlify.app`, // Site domain. Do not include a trailing slash!
 
   postsPerPage: 12, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 
