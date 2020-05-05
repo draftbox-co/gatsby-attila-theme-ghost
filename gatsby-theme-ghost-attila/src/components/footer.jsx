@@ -47,7 +47,7 @@ const Footer = () => {
         <div>
           <ul className="credits">
             <li>
-              <a href="https://draftbox.co" target="_blank" rel="norefferer noopener">
+              <a href="https://draftbox.co" target="_blank" rel="noopener norefferer">
                 Published With DraftBox
               </a>
             </li>
