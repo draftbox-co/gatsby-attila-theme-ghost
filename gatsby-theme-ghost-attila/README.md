@@ -20,7 +20,7 @@ Play with the [Demo](https://gatsby-attila.netlify.com/) to get a first impressi
 
 ## Installation
 
-> Head over to the [starter repo](https://github.com/armada-inc/gatsby-attila-theme-starter) to get up and running quickly! 
+> Head over to the [starter repo](https://github.com/draftbox-co/gatsby-attila-theme-starter) to get up and running quickly! 
 
 
 If you want to add this blog theme to an existing site, follow these instructions:
@@ -28,9 +28,9 @@ If you want to add this blog theme to an existing site, follow these instruction
 1. Install the blog theme
 
     ```bash
-    yarn add @armada-inc/gatsby-attila-theme-ghost
+    yarn add @draftbox-co/gatsby-attila-theme-ghost
     # or
-    npm install @armada-inc/gatsby-attila-theme-ghost --save
+    npm install @draftbox-co/gatsby-attila-theme-ghost --save
     ```
 
 2. Add the following configuration to your `gatsby-config.js` file
@@ -40,7 +40,7 @@ If you want to add this blog theme to an existing site, follow these instruction
     module.exports = {
     plugins: [
         {
-        resolve: `@armada-inc/gatsby-attila-theme-ghost`,
+        resolve: `@draftbox-co/gatsby-attila-theme-ghost`,
         options: {
             siteConfig: {
             siteUrl: `https://your-bog.com`,
@@ -99,4 +99,4 @@ Inspired from [gatsby-theme-try-ghost](https://github.com/styxlab/gatsby-theme-t
 
 # Copyright & License
 
-Copyright (c) 2020 Armada Intelligence Inc - Released under the [MIT license](LICENSE).
+Copyright (c) 2020 Draftbox - Released under the [MIT license](LICENSE).

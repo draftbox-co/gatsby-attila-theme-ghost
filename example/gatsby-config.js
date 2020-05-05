@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
     {
-      resolve: `@armada-inc/gatsby-theme-ghost-attila`,
+      resolve: `@draftbox-co/gatsby-theme-ghost-attila`,
       options: {
         siteConfig: {
           siteUrl: `https://blog.getarmada.app`, // Site domain. Do not include a trailing slash!

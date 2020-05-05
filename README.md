@@ -20,7 +20,7 @@ Play with the [Demo](https://gatsby-attila.netlify.com/) to get a first impressi
 
 ## Quick Start
 
-Head over to the [starter repo](https://github.com/armada-inc/gatsby-attila-theme-starter) to get up and running quickly! The starter is recommended if you are creating a new site.
+Head over to the [starter repo](https://github.com/draftbox-co/gatsby-attila-theme-starter) to get up and running quickly! The starter is recommended if you are creating a new site.
 
 
 ## Installation
@@ -31,7 +31,7 @@ In case you want to work with this repository (for local development, pull reque
 
 1. Clone or fork this repository:
 ```bash
-git clone https://github.com/armada-inc/gatsby-attila-theme-ghost.git
+git clone https://github.com/draftbox-co/gatsby-attila-theme-ghost.git
 cd gatsby-attila-theme-ghost
 ```
 
@@ -49,4 +49,4 @@ Special Thanks to [Ghost](https://ghost.org)
 
 # Copyright & License
 
-Copyright (c) 2020 Armada Intelligence Inc - Released under the [MIT license](LICENSE).
+Copyright (c) 2020 Draftbox - Released under the [MIT license](LICENSE).

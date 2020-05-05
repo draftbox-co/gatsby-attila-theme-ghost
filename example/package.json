@@ -2,7 +2,7 @@
   "name": "example",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Armada Intelligence Inc",
+  "author": "Draftbox",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
@@ -10,7 +10,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "@armada-inc/gatsby-theme-ghost-attila": "^1.0.0",
+    "@draftbox-co/gatsby-theme-ghost-attila": "^1.0.0",
     "disqus-react": "^1.0.7",
     "gatsby": "2.20.24",
     "react": "^16.12.0",
