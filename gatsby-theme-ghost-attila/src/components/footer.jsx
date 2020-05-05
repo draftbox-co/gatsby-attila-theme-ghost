@@ -48,7 +48,7 @@ const Footer = () => {
           <ul className="credits">
             <li>
               <a href="https://draftbox.co" target="_blank" rel="norefferer noopener">
-                Made With DraftBox
+                Published With DraftBox
               </a>
             </li>
           </ul>

@@ -1613,6 +1613,7 @@ input[type="password"] {
   .credits {
     display: flex;
     justify-content: center !important;
+    margin-bottom: 0;
   }
 }
 
@@ -1632,13 +1633,10 @@ input[type="password"] {
   margin: 0;
   padding: 0;
   list-style: none;
+  margin-bottom: 0;
   @media only screen and (max-width: $breakpoint-medium) {
-    margin-bottom: 3rem;
+    margin-top: 1rem;
     justify-content: center;
-  }
-
-  &:last-child {
-    justify-content: flex-end;
   }
 }
 
