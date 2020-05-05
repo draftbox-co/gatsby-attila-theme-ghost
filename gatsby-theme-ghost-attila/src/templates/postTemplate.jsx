@@ -8,13 +8,13 @@ import SubscribeForm from "../components/subscribe-form";
 import Disqus from "../components/disqus";
 
 const PostTemplate = ({ data, location, pageContext }) => {
-  const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPost.title}&url=${data.ghostPost.url}`;
+  const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPost.title}&url=${location.href}`;
 
-  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${data.ghostPost.url}`;
+  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${location.href}`;
 
-  const linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&amp;url=${data.ghostPost.url}/&amp;title=${data.ghostPost.title}`;
+  const linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&amp;url=${location.href}/&amp;title=${data.ghostPost.title}`;
 
-  const mailShareUrl = `mailto:?subject=${data.ghostPost.title}&amp;body=${data.ghostPost.url}`;
+  const mailShareUrl = `mailto:?subject=${data.ghostPost.title}&amp;body=${location.href}`;
 
   const postContentRef = useRef();
 
@@ -45,7 +45,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
   return (
     <>
       <MetaData data={data} location={location} type="article" />
-      <Helmet htmlAttributes={{"lang": "en"}}>
+      <Helmet htmlAttributes={{ lang: "en" }}>
         <style type="text/css">{`${data.ghostPost.codeinjection_styles}`}</style>
       </Helmet>
       <div className={data.ghostPost.feature_image ? "cover-active" : ""}>
