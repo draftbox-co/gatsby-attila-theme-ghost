@@ -166,7 +166,7 @@ input[type="password"] {
   button {
     display: inline-block;
     font-size: 2em;
-    margin: .5rem 2rem;
+    margin: 0.5rem 2rem;
     padding: 0 2rem;
     font-weight: 500;
     color: #fff;
@@ -1595,6 +1595,24 @@ input[type="password"] {
   .inner {
     max-width: none;
     padding: 0 4rem;
+  }
+
+  hr {
+    display: block;
+    height: 1px;
+    margin: 3rem 0 4rem;
+    padding: 0;
+    background: $color-border;
+    border: 0;
+    width: 100%;
+    @media (prefers-color-scheme: dark) {
+      background: $color-border-dark;
+    }
+  }
+
+  .credits {
+    display: flex;
+    justify-content: center !important;
   }
 }
 
