@@ -43,7 +43,7 @@ const SubscribeForm = () => {
   };
 
   return (
-    <div className="subscribe-form">
+    <div className="subscribe-form" id="subscribe">
       <form onSubmit={e => onSubmit(e)}>
         {succeeded && (
           <h1 className="subscribe-title">You’ve successfully subscribed to {siteSettings.title}</h1>
