@@ -785,8 +785,11 @@ input[type="password"] {
 }
 
 .hidden {
-  display: none;
+  position: fixed;
+  opacity: 0;
+  height: 0.25rem;
 }
+
 @keyframes fadein {
   0% {
     opacity: 0.2;

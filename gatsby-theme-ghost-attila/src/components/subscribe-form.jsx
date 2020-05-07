@@ -57,6 +57,7 @@ const SubscribeForm = () => {
             <div>
             <label className="hidden" htmlFor="email">Email</label>
               <input
+                name="email"
                 onChange={e => setEmail(e.target.value)}
                 required
                 placeholder="hello@example.com"
