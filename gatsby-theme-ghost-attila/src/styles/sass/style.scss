@@ -2526,3 +2526,12 @@ input[type="password"] {
     }
   }
 }
+
+@media screen and (max-width: 425px) {
+  iframe {
+    max-width: 100%;
+  }
+  figure img {
+    max-width: 100%;
+  }
+}

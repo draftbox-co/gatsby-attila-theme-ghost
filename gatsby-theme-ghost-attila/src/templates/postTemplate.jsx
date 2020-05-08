@@ -8,13 +8,22 @@ import SubscribeForm from "../components/subscribe-form";
 import Disqus from "../components/disqus";
 
 const PostTemplate = ({ data, location, pageContext }) => {
-  const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPost.title}&url=${location.href}`;
 
-  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${location.href}`;
+  const [href, sethref] = useState("");
 
-  const linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&amp;url=${location.href}/&amp;title=${data.ghostPost.title}`;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      sethref(window.location.href);
+    }
+  }, []);
+  
+  const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPost.title}&url=${href}`;
 
-  const mailShareUrl = `mailto:?subject=${data.ghostPost.title}&amp;body=${location.href}`;
+  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${href}`;
+
+  const linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${href}&title=${data.ghostPost.title}`;
+
+  const mailShareUrl = `mailto:?subject=${data.ghostPost.title}&body=${href}`;
 
   const postContentRef = useRef();
 
