@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import "../styles/sass/style.scss";
 
 const ErrorPage = () => {
   return (
