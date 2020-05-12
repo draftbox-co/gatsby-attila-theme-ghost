@@ -1,6 +1,5 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
-import rssLogo from "../images/rss.svg";
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -47,7 +46,11 @@ const Footer = () => {
         <div>
           <ul className="credits">
             <li>
-              <a href="https://draftbox.co" target="_blank" rel="noopener norefferer">
+              <a
+                href="https://draftbox.co"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 Published With DraftBox
               </a>
             </li>

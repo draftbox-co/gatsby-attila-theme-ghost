@@ -6,9 +6,10 @@ import Helmet from "react-helmet";
 import { MetaData } from "../components/meta";
 import SubscribeForm from "../components/subscribe-form";
 import Disqus from "../components/disqus";
+import CopyLink from "../components/copy-link";
+
 
 const PostTemplate = ({ data, location, pageContext }) => {
-
   const [href, sethref] = useState("");
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
       sethref(window.location.href);
     }
   }, []);
-  
+
   const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPost.title}&url=${href}`;
 
   const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${href}`;
@@ -182,6 +183,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
                       <i className="icon icon-mail"></i>
                       <span className="hidden">Email</span>
                     </a>
+                    <CopyLink textToCopy={href} />
                   </div>
                   {data.ghostPost.primary_tag && (
                     <aside className="post-tags">
