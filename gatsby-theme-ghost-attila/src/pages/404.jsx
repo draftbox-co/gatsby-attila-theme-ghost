@@ -3,12 +3,17 @@ import { Link } from "gatsby";
 
 const ErrorPage = () => {
   return (
-    <section class="error-message">
-      <h1 class="error-code">404</h1>
-      <p class="error-description">Page not found</p>
-      <Link class="error-link" to="/">
-        Go to the front page →
-      </Link>
+    <section class="error-message-container">
+      <div className="error-message">
+        <h1 class="error-code">Page Not Found</h1>
+        <p class="error-description">
+          Looks like you've followed a broken link or entered a URL that doesn't
+          exist on this site.
+        </p>
+        <Link class="error-link" to="/">
+          Back to our site →
+        </Link>
+      </div>
     </section>
   );
 };

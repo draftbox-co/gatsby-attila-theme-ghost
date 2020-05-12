@@ -2542,3 +2542,49 @@ input[type="password"] {
     max-width: 100%;
   }
 }
+
+.error-message-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .error-message {
+    max-width: 42rem;
+    padding: 1.5rem;
+    @media (min-width: 1000px) {
+      padding: 3rem;
+    }
+  }
+
+  .error-code {
+    font-size: 3.5rem;
+  }
+
+  .error-description {
+    font-family: "Cardo", serif;
+    font-size: 2em;
+    line-height: 1.5em;
+  }
+
+  .error-link {
+    display: block;
+    padding: 1rem 0;
+    font-size: 2em;
+    line-height: 2rem;
+    color: $color-primary;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    font-weight: 400;
+    cursor: pointer;
+    transition: color linear 0.1s;
+
+    &:focus,
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
