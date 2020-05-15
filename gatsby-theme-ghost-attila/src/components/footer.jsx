@@ -51,7 +51,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Published With DraftBox
+                Published With Draftbox
               </a>
             </li>
           </ul>
