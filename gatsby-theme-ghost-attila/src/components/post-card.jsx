@@ -24,14 +24,16 @@ const PostCard = ({ post }) => {
                 </Link>)}
                   {post.tags.length > 0 && " in "}
                   {post.tags.map((tag, index) => (
+                    <>
                     <Link
                       key={index}
                       className="post-meta-tag"
                       to={`/tag/${tag.slug}`}
-                    >
-                      {tag.name}
+                    > {tag.name}
                     </Link>
-                  ))}{" "}
+                    {index !== post.tags.length - 1 ? ", " : ""}
+                    </>
+                  ))}{"  "}
                   on{" "}
                   <time dateTime="{{date format='DD-MM-YYYY'}}">
                     {post.updated_at}

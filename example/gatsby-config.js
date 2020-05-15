@@ -21,14 +21,14 @@ module.exports = {
         },
         ghostConfig: {
           development: {
-            apiUrl: "https://blog.getarmada.app",
-            contentApiKey: "6eca800ace9ef5c58736c65b13",
-            version: "v2"
+            apiUrl: "https://ghost.theasdfghjkl.com",
+            contentApiKey: "3d17fad3efaa911df1ed577638",
+            version: "v3"
           },
           production: {
-            apiUrl: "https://blog.getarmada.app",
-            contentApiKey: "6eca800ace9ef5c58736c65b13",
-            version: "v2"
+            apiUrl: "https://ghost.theasdfghjkl.com",
+            contentApiKey: "3d17fad3efaa911df1ed577638",
+            version: "v3"
           }
         }
       }

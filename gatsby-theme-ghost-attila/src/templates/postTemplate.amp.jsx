@@ -32,25 +32,18 @@ const PostTemplate = ({ data, location, pageContext }) => {
               </time>{" "}
             </div>
           </header>
-          {data.ghostPost.localFeatureImage && (
+          {data.ghostPost.localFeatureImage && data.ghostPage.localFeatureImage.childImageSharp && (
             <figure className="post-image">
-              {/* <amp-img
-                src={data.ghostPost.localFeatureImage.childImageSharp.fluid.src}
-                width="600"
-                height="400"
-                layout="responsive"
-                class="i-amphtml-element i-amphtml-layout-responsive i-amphtml-layout-size-defined i-amphtml-layout"
-                i-amphtml-layout="responsive"
-                style="--loader-delay-offset:134ms !important;"
-                i-amphtml-auto-lightbox-visited=""
-                lightbox="i-amphtml-auto-lightbox-0"
-                on="tap:amp-lightbox-gallery.activate"
-              >
-                <i-amphtml-sizer style="padding-top: 66.6667%;"></i-amphtml-sizer>
-                >
-              </amp-img> */}
               <img
                 src={data.ghostPost.localFeatureImage.childImageSharp.fluid.src}
+                alt={data.ghostPost.title}
+              />
+            </figure>
+          )}
+          {data.ghostPost.localFeatureImage && data.ghostPage.localFeatureImage.extension === "svg" && (
+            <figure className="post-image">
+              <img
+                src={data.ghostPost.localFeatureImage.publicURL}
                 alt={data.ghostPost.title}
               />
             </figure>
@@ -90,6 +83,8 @@ export const pageQuery = graphql`
             src
           }
         }
+        publicURL
+        extension
       }
     }
   }

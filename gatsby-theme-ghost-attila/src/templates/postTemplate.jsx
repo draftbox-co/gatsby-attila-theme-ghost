@@ -110,7 +110,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
                 </time>{" "}
                 &bull; {data.ghostPost.readingTime}
               </div>
-              {data.ghostPost.feature_image && (
+              {data.ghostPost.localFeatureImage && data.ghostPost.localFeatureImage.childImageSharp && (
                 <div className="post-cover cover">
                   <img
                     srcSet={
@@ -119,12 +119,16 @@ const PostTemplate = ({ data, location, pageContext }) => {
                     }
                     alt={data.ghostPost.title}
                   />
-                  {/* <Image
-                    fluid={
-                      data.ghostPost.localFeatureImage.childImageSharp.fluid
-                        .srcSet
+                </div>
+              )}
+              {data.ghostPost.localFeatureImage && data.ghostPost.localFeatureImage.extension === "svg" && (
+                <div className="post-cover cover">
+                  <img
+                    src={
+                      data.ghostPost.localFeatureImage.publicURL
                     }
-                  /> */}
+                    alt={data.ghostPost.title}
+                  />
                 </div>
               )}
             </div>
@@ -292,6 +296,8 @@ export const pageQuery = graphql`
             srcSet
           }
         }
+        publicURL
+        extension
       }
       url
       excerpt
