@@ -11,7 +11,7 @@ Turn your Ghost blog into a lightning fast static website. This Gatsby theme is 
 
 ## Demo
 
-Play with the [Demo](https://ghost-attila.draftbox.co/) to get a first impression.
+Play with the [Demo](https://ghost-attila-preview.draftbox.co/) to get a first impression.
 
 
 ## Features
