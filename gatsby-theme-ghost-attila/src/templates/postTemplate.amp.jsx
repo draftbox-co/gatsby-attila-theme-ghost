@@ -32,7 +32,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
               </time>{" "}
             </div>
           </header>
-          {data.ghostPost.localFeatureImage && data.ghostPage.localFeatureImage.childImageSharp && (
+          {data.ghostPost.localFeatureImage && data.ghostPost.localFeatureImage.childImageSharp && (
             <figure className="post-image">
               <img
                 src={data.ghostPost.localFeatureImage.childImageSharp.fluid.src}
@@ -40,7 +40,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
               />
             </figure>
           )}
-          {data.ghostPost.localFeatureImage && data.ghostPage.localFeatureImage.extension === "svg" && (
+          {data.ghostPost.localFeatureImage && data.ghostPost.localFeatureImage.extension === "svg" && (
             <figure className="post-image">
               <img
                 src={data.ghostPost.localFeatureImage.publicURL}
