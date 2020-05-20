@@ -15,7 +15,10 @@ const Footer = () => {
       <div className="nav-footer">
         <nav className="nav-wrapper">
           <span className="nav-copy">
-            {data.ghostSettings.title} &copy; {new Date().getFullYear()}
+            <span
+              dangerouslySetInnerHTML={{ __html: data.ghostSettings.title }}
+            ></span>{" "}
+            &copy; {new Date().getFullYear()}
           </span>
 
           <div className="nav-footer-links">

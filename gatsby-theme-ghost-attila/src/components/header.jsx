@@ -24,7 +24,7 @@ const Header = () => {
   `);
 
   const {
-    allGhostSettings: { edges }
+    allGhostSettings: { edges },
   } = data;
 
   const siteSettings = edges[0].node;
@@ -33,8 +33,14 @@ const Header = () => {
       <header className="blog-header">
         <div className="inner">
           <div className="box blog-box">
-            <h1 className="blog-name">{siteSettings.title}</h1>
-            <span className="blog-description">{siteSettings.description}</span>
+            <h1
+              className="blog-name break-words"
+              dangerouslySetInnerHTML={{ __html: siteSettings.title }}
+            ></h1>
+            <span
+              className="blog-description break-words"
+              dangerouslySetInnerHTML={{ __html: siteSettings.description }}
+            ></span>
           </div>
           <div className="blog-cover cover"></div>
         </div>

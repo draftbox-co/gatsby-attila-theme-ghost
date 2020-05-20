@@ -10,38 +10,49 @@ const PostCard = ({ post }) => {
             <div className="inner">
               <div className="box post-box">
                 <h2 className="post-title">
-                  <Link to={`/${post.slug}`}>{post.title}</Link>
+                  <Link
+                    className="break-words"
+                    to={`/${post.slug}`}
+                    dangerouslySetInnerHTML={{ __html: post.title }}
+                  ></Link>
                 </h2>
 
                 <span className="post-meta">
-                  By {post.authors.map((author, index) => 
-                  <Link
-                  key={index}
-                  className="post-meta-tag"
-                  to={`/author/${author.slug}`}
-                >
-                  {author.name}
-                </Link>)}
-                  {post.tags.length > 0 && " in "}
-                  {post.tags.map((tag, index) => (
-                    <>
+                  By{" "}
+                  {post.authors.map((author, index) => (
                     <Link
                       key={index}
                       className="post-meta-tag"
-                      to={`/tag/${tag.slug}`}
-                    > {tag.name}
+                      to={`/author/${author.slug}`}
+                    >
+                      {author.name}
                     </Link>
-                    {index !== post.tags.length - 1 ? ", " : ""}
+                  ))}
+                  {post.tags.length > 0 && " in "}
+                  {post.tags.map((tag, index) => (
+                    <>
+                      <Link
+                        key={index}
+                        className="post-meta-tag"
+                        to={`/tag/${tag.slug}`}
+                      >
+                        {" "}
+                        {tag.name}
+                      </Link>
+                      {index !== post.tags.length - 1 ? ", " : ""}
                     </>
-                  ))}{"  "}
+                  ))}
+                  {"  "}
                   on{" "}
                   <time dateTime="{{date format='DD-MM-YYYY'}}">
                     {post.updated_at}
-                  </time>
-                  {" "}
-                  &bull; {post.readingTime} 
+                  </time>{" "}
+                  &bull; {post.readingTime}
                 </span>
-                <p className="post-excerpt">{post.excerpt}&hellip;</p>
+                <p
+                  className="post-excerpt break-words"
+                  dangerouslySetInnerHTML={{ __html: post.excerpt + '...' }}
+                ></p>
               </div>
             </div>
           </article>

@@ -8,7 +8,6 @@ import SubscribeForm from "../components/subscribe-form";
 import Disqus from "../components/disqus";
 import CopyLink from "../components/copy-link";
 
-
 const PostTemplate = ({ data, location, pageContext }) => {
   const [href, sethref] = useState("");
 
@@ -84,7 +83,10 @@ const PostTemplate = ({ data, location, pageContext }) => {
                   </span>
                 )}
               </span>
-              <h1 className="post-title">{data.ghostPost.title}</h1>
+              <h1
+                className="post-title break-words"
+                dangerouslySetInnerHTML={{ __html: data.ghostPost.title }}
+              ></h1>
               <div className="post-meta">
                 <div className="post-meta-avatars">
                   {data.ghostPost.primary_author.profile_image && (
@@ -110,27 +112,27 @@ const PostTemplate = ({ data, location, pageContext }) => {
                 </time>{" "}
                 &bull; {data.ghostPost.readingTime}
               </div>
-              {data.ghostPost.localFeatureImage && data.ghostPost.localFeatureImage.childImageSharp && (
-                <div className="post-cover cover">
-                  <img
-                    srcSet={
-                      data.ghostPost.localFeatureImage.childImageSharp.fluid
-                        .srcSet
-                    }
-                    alt={data.ghostPost.title}
-                  />
-                </div>
-              )}
-              {data.ghostPost.localFeatureImage && data.ghostPost.localFeatureImage.extension === "svg" && (
-                <div className="post-cover cover">
-                  <img
-                    src={
-                      data.ghostPost.localFeatureImage.publicURL
-                    }
-                    alt={data.ghostPost.title}
-                  />
-                </div>
-              )}
+              {data.ghostPost.localFeatureImage &&
+                data.ghostPost.localFeatureImage.childImageSharp && (
+                  <div className="post-cover cover">
+                    <img
+                      srcSet={
+                        data.ghostPost.localFeatureImage.childImageSharp.fluid
+                          .srcSet
+                      }
+                      alt={data.ghostPost.title}
+                    />
+                  </div>
+                )}
+              {data.ghostPost.localFeatureImage &&
+                data.ghostPost.localFeatureImage.extension === "svg" && (
+                  <div className="post-cover cover">
+                    <img
+                      src={data.ghostPost.localFeatureImage.publicURL}
+                      alt={data.ghostPost.title}
+                    />
+                  </div>
+                )}
             </div>
           </header>
           <main className="content" role="main">
@@ -138,7 +140,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
               <div className="inner">
                 <section
                   ref={postContentRef}
-                  className="post-content"
+                  className="post-content break-words"
                   dangerouslySetInnerHTML={{
                     __html: data.ghostPost.rehypedHTML.html,
                   }}

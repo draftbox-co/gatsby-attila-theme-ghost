@@ -19,9 +19,12 @@ const TagsTemplate = ({ data, pageContext }) => {
               </span>
               <h2 className="archive-title">{data.ghostTag.name}</h2>
               {data.ghostTag.description && (
-                <span className="archive-description">
-                  {data.ghostTag.description}
-                </span>
+                <span
+                  className="archive-description break-words"
+                  dangerouslySetInnerHTML={{
+                    __html: data.ghostTag.description,
+                  }}
+                ></span>
               )}
             </div>
           </div>
@@ -29,7 +32,7 @@ const TagsTemplate = ({ data, pageContext }) => {
         <div id="index" className="container">
           <main className="content" role="main">
             {data.allGhostPost.edges.map(({ node }, i) => {
-              return <PostCard post={node} key={i}/>;
+              return <PostCard post={node} key={i} />;
             })}
           </main>
         </div>

@@ -16,7 +16,7 @@ const PageTemplate = ({ data, location }) => {
   return (
     <>
       <MetaData data={data} location={location} type="article" />
-      <Helmet htmlAttributes={{"lang": "en"}}>
+      <Helmet htmlAttributes={{ lang: "en" }}>
         <style type="text/css">{`${data.ghostPage.codeinjection_styles}`}</style>
       </Helmet>
       <div className={data.ghostPage.feature_image ? "cover-active" : ""}>
@@ -35,7 +35,10 @@ const PageTemplate = ({ data, location }) => {
                   </span>
                 )}
               </span>
-              <h1 className="post-title">{data.ghostPage.title}</h1>
+              <h1
+                className="post-title break-words"
+                dangerouslySetInnerHTML={{ __html: data.ghostPage.title }}
+              ></h1>
               <div className="post-meta">
                 <div className="post-meta-avatars">
                   {data.ghostPage.primary_author.profile_image && (
@@ -61,37 +64,39 @@ const PageTemplate = ({ data, location }) => {
                 </time>{" "}
                 &bull; {data.ghostPage.readingTime}
               </div>
-              {data.ghostPage.localFeatureImage && data.ghostPage.localFeatureImage.childImageSharp && (
-                <div class="post-cover cover">
-                  <img
-                    srcSet={
-                      data.ghostPage.localFeatureImage.childImageSharp.fluid
-                        .srcSet
-                    }
-                    alt={data.ghostPage.title}
-                  />
-                </div>
-              )}
-              {data.ghostPage.localFeatureImage && data.ghostPage.localFeatureImage.extension === "svg" && (
-                <div class="post-cover cover">
-                  <img
-                    src={
-                      data.ghostPage.localFeatureImage.publicURL
-                    }
-                    alt={data.ghostPage.title}
-                  />
-                </div>
-              )}
+              {data.ghostPage.localFeatureImage &&
+                data.ghostPage.localFeatureImage.childImageSharp && (
+                  <div class="post-cover cover">
+                    <img
+                      srcSet={
+                        data.ghostPage.localFeatureImage.childImageSharp.fluid
+                          .srcSet
+                      }
+                      alt={data.ghostPage.title}
+                    />
+                  </div>
+                )}
+              {data.ghostPage.localFeatureImage &&
+                data.ghostPage.localFeatureImage.extension === "svg" && (
+                  <div class="post-cover cover">
+                    <img
+                      src={data.ghostPage.localFeatureImage.publicURL}
+                      alt={data.ghostPage.title}
+                    />
+                  </div>
+                )}
             </div>
           </header>
           <main className="content" role="main">
             <article className="post tag-getting-started">
               <div className="inner">
-                <section
-                  className="post-full-content"
-                  
-                >
-                  <div className="post-content" dangerouslySetInnerHTML={{ __html: data.ghostPage.rehypedHTML[0].html }}></div>
+                <section className="post-full-content">
+                  <div
+                    className="post-content break-words"
+                    dangerouslySetInnerHTML={{
+                      __html: data.ghostPage.rehypedHTML[0].html,
+                    }}
+                  ></div>
                 </section>
 
                 <section className="post-footer">
@@ -198,7 +203,7 @@ const PageTemplate = ({ data, location }) => {
   );
 };
 
-export default PageTemplate
+export default PageTemplate;
 
 export const pageQuery = graphql`
   query($slug: String) {

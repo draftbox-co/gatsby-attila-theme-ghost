@@ -25,9 +25,10 @@ const AuthorTemplate = ({ data, pageContext }) => {
             <h2 className="archive-title">{data.ghostAuthor.name}</h2>
 
             {data.ghostAuthor.bio && (
-              <span className="archive-description">
-                {data.ghostAuthor.bio}
-              </span>
+              <span
+                className="archive-description break-wordsF"
+                dangerouslySetInnerHTML={{ __html: data.ghostAuthor.bio }}
+              ></span>
             )}
 
             <span className="archive-links">
