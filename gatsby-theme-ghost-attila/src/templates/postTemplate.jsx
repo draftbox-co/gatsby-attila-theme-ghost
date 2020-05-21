@@ -138,13 +138,15 @@ const PostTemplate = ({ data, location, pageContext }) => {
           <main className="content" role="main">
             <article className="post tag-getting-started">
               <div className="inner">
-                <section
-                  ref={postContentRef}
-                  className="post-content break-words"
-                  dangerouslySetInnerHTML={{
-                    __html: data.ghostPost.rehypedHTML.html,
-                  }}
-                ></section>
+                {data.ghostPost.rehypedHTML && data.ghostPost.rehypedHTML.html && (
+                  <section
+                    ref={postContentRef}
+                    className="post-content break-words"
+                    dangerouslySetInnerHTML={{
+                      __html: data.ghostPost.rehypedHTML.html,
+                    }}
+                  ></section>
+                )}
 
                 <section className="post-footer">
                   <div className="post-share">

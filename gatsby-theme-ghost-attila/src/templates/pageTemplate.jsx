@@ -90,14 +90,18 @@ const PageTemplate = ({ data, location }) => {
           <main className="content" role="main">
             <article className="post tag-getting-started">
               <div className="inner">
-                <section className="post-full-content">
-                  <div
-                    className="post-content break-words"
-                    dangerouslySetInnerHTML={{
-                      __html: data.ghostPage.rehypedHTML[0].html,
-                    }}
-                  ></div>
-                </section>
+                {data.ghostPage.rehypedHTML &&
+                  data.ghostPage.rehypedHTML.length > 0 &&
+                  data.ghostPage.rehypedHTML[0].html && (
+                    <section className="post-full-content">
+                      <div
+                        className="post-content break-words"
+                        dangerouslySetInnerHTML={{
+                          __html: data.ghostPage.rehypedHTML[0].html,
+                        }}
+                      ></div>
+                    </section>
+                  )}
 
                 <section className="post-footer">
                   <div className="post-share">

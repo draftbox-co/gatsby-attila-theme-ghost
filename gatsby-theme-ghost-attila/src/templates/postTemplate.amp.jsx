@@ -48,10 +48,11 @@ const PostTemplate = ({ data, location, pageContext }) => {
               />
             </figure>
           )}
-          <section
+          {data.ghostPost && data.ghostPost.html && <section
             className="post-content"
             dangerouslySetInnerHTML={{ __html: data.ghostPost.html }}
-          ></section>
+          ></section>}
+          
         </article>
       </main>
     </>

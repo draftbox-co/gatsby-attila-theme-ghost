@@ -1,7 +1,7 @@
 const _ = require(`lodash`);
 const { paginate } = require(`gatsby-awesome-pagination`);
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
-const readingTime = require('reading-time');
+const readingTime = require("reading-time");
 
 /**
  * Here is the place where Gatsby creates the URLs for all the
@@ -15,11 +15,15 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
     extend(options, prevFieldConfig) {
       return {
         resolve(source) {
-          const readingTimeValue = readingTime(source.html);
-          return readingTimeValue.text;
-        }
+          if (source.html) {
+            const readingTimeValue = readingTime(source.html);
+            return readingTimeValue.text;
+          } else {
+            return "1 min read";
+          }
+        },
       };
-    }
+    },
   });
 
   createTypes(`
@@ -40,7 +44,7 @@ exports.onCreateNode = async ({
   actions,
   store,
   createNodeId,
-  cache
+  cache,
 }) => {
   // Check that we are modifying right node types.
   const nodeTypes = [`GhostPost`, `GhostPage`];
@@ -58,7 +62,7 @@ exports.onCreateNode = async ({
       cache,
       createNode,
       parentNodeId: node.id,
-      createNodeId
+      createNodeId,
     });
 
     if (fileNode) {
@@ -184,8 +188,8 @@ exports.createPages = async ({ graphql, actions }) => {
           prevPageNumber: prevPageNumber,
           nextPageNumber: nextPageNumber,
           previousPagePath: previousPagePath,
-          nextPagePath: nextPagePath
-        }
+          nextPagePath: nextPagePath,
+        },
       });
     });
   });
@@ -199,8 +203,8 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         slug: node.slug,
         prev: index !== 0 ? array[index - 1].node.slug : null,
-        next: index !== array.length - 1 ? array[index + 1].node.slug : null
-      }
+        next: index !== array.length - 1 ? array[index + 1].node.slug : null,
+      },
     });
 
     createPage({
@@ -209,8 +213,8 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         slug: node.slug,
         title: websiteTitle,
-        amp: true
-      }
+        amp: true,
+      },
     });
   });
 
@@ -247,8 +251,8 @@ exports.createPages = async ({ graphql, actions }) => {
           prevPageNumber: prevPageNumber,
           nextPageNumber: nextPageNumber,
           previousPagePath: previousPagePath,
-          nextPagePath: nextPagePath
-        }
+          nextPagePath: nextPagePath,
+        },
       });
     });
   });
@@ -266,8 +270,8 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
-          slug: node.slug
-        }
+          slug: node.slug,
+        },
       });
     });
 
@@ -283,6 +287,6 @@ exports.createPages = async ({ graphql, actions }) => {
       } else {
         return `/page`;
       }
-    }
+    },
   });
 };
