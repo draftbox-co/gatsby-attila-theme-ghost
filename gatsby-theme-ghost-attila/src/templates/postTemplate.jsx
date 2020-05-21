@@ -7,6 +7,7 @@ import { MetaData } from "../components/meta";
 import SubscribeForm from "../components/subscribe-form";
 import Disqus from "../components/disqus";
 import CopyLink from "../components/copy-link";
+import "../styles/prism-theme/prism_dracula.scss";
 
 const PostTemplate = ({ data, location, pageContext }) => {
   const [href, sethref] = useState("");

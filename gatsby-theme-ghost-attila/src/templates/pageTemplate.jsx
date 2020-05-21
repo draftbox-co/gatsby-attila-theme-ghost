@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Helmet from "react-helmet";
 import { MetaData } from "../components/meta";
+import "../styles/prism-theme/prism_dracula.scss";
 
 const PageTemplate = ({ data, location }) => {
   const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPage.title}&url=${data.ghostPage.url}`;
