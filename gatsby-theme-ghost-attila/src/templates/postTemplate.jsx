@@ -32,7 +32,8 @@ const PostTemplate = ({ data, location, pageContext }) => {
 
   useEffect(() => {
     var post = document.querySelector(".post-content");
-    window.addEventListener("scroll", () => {
+
+    const readingProgessTracker = () => {
       var postBottom =
         post.getBoundingClientRect().top +
         document.documentElement.scrollTop +
@@ -45,11 +46,17 @@ const PostTemplate = ({ data, location, pageContext }) => {
           100;
 
       setReadProgress(progress);
+    };
 
-      return () => {
-        window.removeEventListener("scroll");
-      };
-    });
+    if (post) {
+      window.addEventListener("scroll", readingProgessTracker);
+    }
+
+    return () => {
+      if (post) {
+        window.removeEventListener("scroll", readingProgessTracker);
+      }
+    };
   });
 
   return (

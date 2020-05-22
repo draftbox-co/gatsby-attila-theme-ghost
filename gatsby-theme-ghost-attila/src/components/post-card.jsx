@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "gatsby";
 
 const PostCard = ({ post }) => {
+  let excerpt = "";
+
+  if (post.excerpt) {
+    excerpt = post.excerpt + "...";
+  }
+
   return (
     <div id={post.uuid} className="container">
       <main className="content" role="main">
@@ -51,7 +57,7 @@ const PostCard = ({ post }) => {
                 </span>
                 <p
                   className="post-excerpt break-words"
-                  dangerouslySetInnerHTML={{ __html: post.excerpt + '...' }}
+                  dangerouslySetInnerHTML={{ __html: excerpt }}
                 ></p>
               </div>
             </div>
