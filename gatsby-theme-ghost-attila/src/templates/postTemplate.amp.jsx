@@ -28,7 +28,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
                 className="post-date"
                 dateTime="{{date format='DD-MM-YYYY'}}"
               >
-                {data.ghostPost.updated_at}
+                {data.ghostPost.published_at}
               </time>{" "}
             </div>
           </header>
@@ -76,6 +76,7 @@ export const pageQuery = graphql`
         slug
       }
       updated_at(formatString: "MMMM DD YYYY")
+      published_at(formatString: "MMMM DD YYYY")
       feature_image
       localFeatureImage {
         childImageSharp {

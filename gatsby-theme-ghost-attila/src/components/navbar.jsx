@@ -34,6 +34,7 @@ const Navbar = () => {
 
   const siteSettings = edges[0].node;
   const siteUrl = siteMetadata.siteUrl;
+  const navigation = siteSettings.navigation.filter(nav => !nav.url.startsWith("/contact"));
 
   return (
     <>
@@ -47,7 +48,7 @@ const Navbar = () => {
             )}
           </span>
           <ul role="navigation" aria-label="Navigation">
-            {siteSettings.navigation.map(({ label, url }, i) => {
+            {navigation.map(({ label, url }, i) => {
               return url.startsWith("/") || url.startsWith(siteUrl) ? (
                 <li key={i} role="presentation">
                   <Link

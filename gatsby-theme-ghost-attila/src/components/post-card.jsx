@@ -51,7 +51,7 @@ const PostCard = ({ post }) => {
                   {"  "}
                   on{" "}
                   <time dateTime="{{date format='DD-MM-YYYY'}}">
-                    {post.updated_at}
+                    {post.published_at}
                   </time>{" "}
                   &bull; {post.readingTime}
                 </span>

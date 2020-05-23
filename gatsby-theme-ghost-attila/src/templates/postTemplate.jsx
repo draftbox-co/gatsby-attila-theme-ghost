@@ -116,7 +116,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
                   {data.ghostPost.primary_author.name}
                 </h4>
                 <time dateTime="{{date format='DD-MM-YYYY'}}">
-                  {data.ghostPost.updated_at}
+                  {data.ghostPost.published_at}
                 </time>{" "}
                 &bull; {data.ghostPost.readingTime}
               </div>
@@ -224,7 +224,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
                         </p>
                         <p className="post-nav-meta">
                           <time dateTime="{{date format='DD-MM-YYYY'}}">
-                            {data.nextPost.updated_at}
+                            {data.nextPost.published_at}
                           </time>
                         </p>
                       </section>
@@ -243,7 +243,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
                         </p>
                         <p className="post-nav-meta">
                           <time dateTime="{{date format='DD-MM-YYYY'}}">
-                            {data.prevPost.updated_at}
+                            {data.prevPost.published_at}
                           </time>
                         </p>
                       </section>
@@ -272,7 +272,6 @@ export const pageQuery = graphql`
     ghostPost(slug: { eq: $slug }) {
       title
       html
-      published_at
       rehypedHTML: childHtmlRehype {
         html
       }
@@ -300,6 +299,7 @@ export const pageQuery = graphql`
         slug
       }
       updated_at(formatString: "MMMM DD YYYY")
+      published_at(formatString: "MMMM DD YYYY")
       readingTime
       feature_image
       localFeatureImage {
@@ -320,6 +320,7 @@ export const pageQuery = graphql`
       excerpt
       slug
       updated_at(formatString: "MMMM DD YYYY")
+      published_at(formatString: "MMMM DD YYYY")
     }
 
     nextPost: ghostPost(slug: { eq: $next }) {
@@ -327,6 +328,7 @@ export const pageQuery = graphql`
       excerpt
       slug
       updated_at(formatString: "MMMM DD YYYY")
+      published_at(formatString: "MMMM DD YYYY")
     }
   }
 `;

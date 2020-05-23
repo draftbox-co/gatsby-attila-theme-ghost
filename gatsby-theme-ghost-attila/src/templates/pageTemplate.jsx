@@ -61,7 +61,7 @@ const PageTemplate = ({ data, location }) => {
                   {data.ghostPage.primary_author.name}
                 </h4>
                 <time dateTime="{{date format='DD-MM-YYYY'}}">
-                  {data.ghostPage.updated_at}
+                  {data.ghostPage.published_at}
                 </time>{" "}
                 &bull; {data.ghostPage.readingTime}
               </div>
@@ -171,7 +171,7 @@ const PageTemplate = ({ data, location }) => {
                         </p>
                         <p className="post-nav-meta">
                           <time dateTime="{{date format='DD-MM-YYYY'}}">
-                            {data.nextPost.updated_at}
+                            {data.nextPost.published_at}
                           </time>
                         </p>
                       </section>
@@ -190,7 +190,7 @@ const PageTemplate = ({ data, location }) => {
                         </p>
                         <p className="post-nav-meta">
                           <time dateTime="{{date format='DD-MM-YYYY'}}">
-                            {data.prevPost.updated_at}
+                            {data.prevPost.published_at}
                           </time>
                         </p>
                       </section>
@@ -226,7 +226,7 @@ export const pageQuery = graphql`
       updated_at_pretty: updated_at(formatString: "DD MMMM, YYYY")
       # Dates unformatted
       created_at(formatString: "DD MMMM, YYYY")
-      published_at
+      published_at(formatString: "MMMM DD YYYY")
       updated_at(formatString: "MMMM DD YYYY")
       # SEO
       meta_title

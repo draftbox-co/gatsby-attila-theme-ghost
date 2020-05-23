@@ -37,6 +37,7 @@ export const pageQuery = graphql`
           title
           url
           updated_at(formatString: "MMMM DD YYYY")
+          published_at(formatString: "MMMM DD YYYY")
           authors {
             name
             slug
