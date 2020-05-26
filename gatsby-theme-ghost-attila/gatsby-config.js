@@ -8,6 +8,11 @@ const generateRSSFeed = require(`./src/utils/rss/generate-feed`);
 module.exports = themeOptions => {
   const siteConfig = themeOptions.siteConfig || siteConfigDefaults;
   const ghostConfig = themeOptions.ghostConfig || ghostConfigDefaults;
+  const finalConfig = process.env.NODE_ENV === `development`
+  ? ghostConfig.development
+  : ghostConfig.production;
+
+  siteConfig.apiUrl = finalConfig.apiUrl;
 
   return {
     siteMetadata: siteConfig,

@@ -22,6 +22,7 @@ const Navbar = () => {
       site {
         siteMetadata {
           siteUrl
+          apiUrl
         }
       }
     }
@@ -34,6 +35,7 @@ const Navbar = () => {
 
   const siteSettings = edges[0].node;
   const siteUrl = siteMetadata.siteUrl;
+  const apiUrl = siteMetadata.apiUrl;
   const navigation = siteSettings.navigation.filter(nav => !nav.url.startsWith("/contact"));
 
   return (
@@ -49,13 +51,13 @@ const Navbar = () => {
           </span>
           <ul role="navigation" aria-label="Navigation">
             {navigation.map(({ label, url }, i) => {
-              return url.startsWith("/") || url.startsWith(siteUrl) ? (
+              return url.startsWith("/") || url.startsWith(siteUrl) || url.startsWith(apiUrl) ? (
                 <li key={i} role="presentation">
                   <Link
                     to={`${
                       url.startsWith("/")
                         ? url
-                        : url.slice(siteUrl.length, url.length)
+                        : url.startsWith(siteUrl) ? url.slice(siteUrl.length, url.length) : url.slice(apiUrl.length, url.length)
                     }`}
                     activeClassName="active"
                   >
