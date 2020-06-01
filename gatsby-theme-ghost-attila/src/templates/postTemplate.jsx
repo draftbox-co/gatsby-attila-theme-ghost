@@ -62,7 +62,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
   return (
     <>
       <MetaData data={data} location={location} type="article" />
-      <Helmet htmlAttributes={{ lang: "en" }}>
+      <Helmet>
         <style type="text/css">{`${data.ghostPost.codeinjection_styles}`}</style>
       </Helmet>
       <div className={data.ghostPost.feature_image ? "cover-active" : ""}>

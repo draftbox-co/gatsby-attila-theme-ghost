@@ -12,7 +12,7 @@ const ImageMeta = ({ settings, image }) => {
     }
 
     return (
-        <Helmet htmlAttributes={{"lang": "en"}}>
+        <Helmet>
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:image" content={image} />
             <meta property="og:image" content={image} />

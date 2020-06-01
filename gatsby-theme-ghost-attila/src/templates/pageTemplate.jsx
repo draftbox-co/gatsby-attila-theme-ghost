@@ -17,7 +17,7 @@ const PageTemplate = ({ data, location }) => {
   return (
     <>
       <MetaData data={data} location={location} type="article" />
-      <Helmet htmlAttributes={{ lang: "en" }}>
+      <Helmet>
         <style type="text/css">{`${data.ghostPage.codeinjection_styles}`}</style>
       </Helmet>
       <div className={data.ghostPage.feature_image ? "cover-active" : ""}>
