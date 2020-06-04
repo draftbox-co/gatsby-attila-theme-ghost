@@ -194,7 +194,13 @@ module.exports = themeOptions => {
           dirName: __dirname,
           themePath: `src/amp-styles/post.amp.css`
         }
-      }
+      },
+      {
+        resolve: `gatsby-plugin-remove-generator`,
+        options: {
+          content: `Draftbox`,
+        },
+      },
     ]
   };
 };
