@@ -49,6 +49,7 @@ export const pageQuery = graphql`
           excerpt
           slug
           readingTime
+          featured
         }
       }
     }

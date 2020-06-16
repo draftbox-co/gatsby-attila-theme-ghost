@@ -1430,7 +1430,8 @@ input[type="password"] {
   &:last-child {
     justify-content: flex-end;
     @media only screen and (max-width: $breakpoint-medium) {
-      display: none;
+      //display: none;
+      justify-content: space-between;
     }
   }
 }
@@ -1637,6 +1638,22 @@ input[type="password"] {
   }
 }
 
+.side-nav.side-nav-social {
+  @media only screen and (max-width: $breakpoint-medium) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    li {
+      a {
+        padding-left: 0;
+        &:before {
+          width: 0;
+        }
+      }
+    }
+  }
+}
+
 .nav-footer ul {
   position: relative;
   display: flex;
@@ -1648,6 +1665,12 @@ input[type="password"] {
   @media only screen and (max-width: $breakpoint-medium) {
     margin-top: 1rem;
     justify-content: center;
+    flex-direction: column;
+    li {
+      margin-right: 0;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
   }
 }
 

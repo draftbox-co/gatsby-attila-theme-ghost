@@ -42,10 +42,7 @@ const ContactForm = () => {
           )}
           {!succeeded && (
             <>
-              {/* <span className="post-info">
-                <span className="post-type">Contact us</span>
-              </span> */}
-              <div className="post-title">Contact Us</div>
+              <div className="post-title">Contact</div>
               <form className="form-content" onSubmit={e => handleSubmit(e)}>
                 <div>
                   <label htmlFor="name">Name</label>

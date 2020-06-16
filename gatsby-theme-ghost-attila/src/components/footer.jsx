@@ -8,42 +8,70 @@ const Footer = () => {
         title
         codeinjection_foot
       }
+      site {
+        siteMetadata {
+          siteUrl
+          apiUrl
+          footer {
+            copyright
+            navigation {
+              label
+              url
+            }
+          }
+        }
+      }
     }
   `);
+
+  const navigation = data.site.siteMetadata.footer.navigation;
+  const siteUrl = data.site.siteMetadata.siteUrl;
+  const apiUrl = data.site.siteMetadata.apiUrl;
+  const copyright = data.site.siteMetadata.footer.copyright;
+
   return (
     <>
       <div className="nav-footer">
         <nav className="nav-wrapper">
           <span className="nav-copy">
             <span
-              dangerouslySetInnerHTML={{ __html: data.ghostSettings.title }}
+              dangerouslySetInnerHTML={{
+                __html: copyright ? copyright : data.ghostSettings.title,
+              }}
             ></span>{" "}
             &copy; {new Date().getFullYear()}
           </span>
 
           <div className="nav-footer-links">
             <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <a href="/sitemap.xml">Sitemap</a>
-              </li>
-              <li>
-                <a href="/rss">RSS</a>
-              </li>
-              <li>
-                <Link to="/contact">Contact Us</Link>
-              </li>
+              {navigation.map(({ label, url }, i) => {
+                return url.startsWith("/") ||
+                  url.startsWith(siteUrl) ||
+                  url.startsWith(apiUrl) ? (
+                  <li key={i} role="presentation">
+                    <Link
+                      to={`${
+                        url.startsWith("/")
+                          ? url
+                          : url.startsWith(siteUrl)
+                          ? url.slice(siteUrl.length, url.length)
+                          : url.slice(apiUrl.length, url.length)
+                      }`}
+                      activeClassName="active"
+                    >
+                      <span>{label}</span>
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={i} role="presentation">
+                    <a href={url} target="_blank" rel="noreferrer noopener">
+                      {label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
-
-          {/* <span className="nav-credits">
-            Made with DraftBox &bull;{" "}
-            <a href="/rss">
-              RSS <img style={{height: '10px'}} src={rssLogo} alt="" />
-            </a>
-          </span> */}
         </nav>
         <hr />
         <div>
