@@ -6,6 +6,7 @@ import Helmet from "react-helmet";
 import { MetaData } from "../components/meta";
 import SubscribeForm from "../components/subscribe-form";
 import Disqus from "../components/disqus";
+import FbComments from "../components/fb-comments";
 import CopyLink from "../components/copy-link";
 import "../styles/prism-theme/prism_dracula.scss";
 
@@ -256,6 +257,9 @@ const PostTemplate = ({ data, location, pageContext }) => {
             </article>
             <div className="inner" style={{ marginTop: "20px" }}>
               <Disqus slug={pageContext.slug} title={data.ghostPost.title} />
+            </div>
+            <div className="inner" style={{ marginTop: "20px", width: "100%" }}>
+              <FbComments slug={pageContext.slug} title={data.ghostPost.title} href={href} />
             </div>
           </main>
           <SubscribeForm />
