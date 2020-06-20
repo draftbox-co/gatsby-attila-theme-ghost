@@ -4,17 +4,18 @@ module.exports = {
       resolve: `@draftbox-co/gatsby-theme-ghost-attila`,
       options: {
         siteConfig: {
-          siteUrl: `https://blog.getarmada.app`, // Site domain. Do not include a trailing slash!
+          siteUrl: `https://ghost-attila-preview.draftbox.co`, // Site domain. Do not include a trailing slash!
 
           postsPerPage: 12, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 
-          siteTitleMeta: `Ghost Gatsby Starter`, // This allows an alternative site title for meta data for pages.
-          siteDescriptionMeta: `A starter template to build amazing static websites with Ghost and Gatsby`, // This allows an alternative site description for meta data for pages.
+          siteTitleMeta: "Built with Draftbox",
+          siteDescriptionMeta:
+            "Lightning fast, secure front-end for your WordPress or Ghost blog, without coding.",
 
           shareImageWidth: 1000, // Change to the width of your default share image
           shareImageHeight: 523, // Change to the height of your default share image
 
-          shortTitle: `Ghost`, // Used for App manifest e.g. Mobile Home Screen
+          shortTitle: "Built with Draftbox", // Used for App manifest e.g. Mobile Home Screen
           siteIcon: `favicon.png`, // Logo in /static dir used for SEO, RSS, and App manifest
           backgroundColor: `#e9e9e9`, // Used for Offline Manifest
           themeColor: `#15171A`, // Used for Offline Manifest
@@ -28,11 +29,11 @@ module.exports = {
             navigation: [
               {
                 label: "Home",
-                url: "https://ghost.theasdfghjkl.com/",
+                url: "https://ghost-attila-preview.draftbox.co/",
               },
               {
                 label: "Contact",
-                url: "https://ghost.theasdfghjkl.com/contact",
+                url: "https://ghost-attila-preview.draftbox.co/contact",
               },
             ],
           },
@@ -41,19 +42,19 @@ module.exports = {
             navigation: [
               {
                 label: "Home",
-                url: "https://ghost.theasdfghjkl.com/",
+                url: "https://ghost-attila-preview.draftbox.co/",
               },
               {
                 label: "Sitemap",
-                url: "https://ghost.theasdfghjkl.com/sitemap.xml",
+                url: "https://ghost-attila-preview.draftbox.co/sitemap.xml",
               },
               {
                 label: "RSS",
-                url: "https://ghost.theasdfghjkl.com/rss.xml",
+                url: "https://ghost-attila-preview.draftbox.co/rss.xml",
               },
               {
                 label: "Contact",
-                url: "https://ghost.theasdfghjkl.com/contact",
+                url: "https://ghost-attila-preview.draftbox.co/contact",
               },
               {
                 label: "External Link",
@@ -67,6 +68,10 @@ module.exports = {
             instagram: "https://www.instagram.com/draftboxhq_uploads",
             linkedin: "https://linkedin.com/",
             github: "https://github.com/draftbox-co",
+          },
+          contactWidget: {
+            title: "Contact Built with Draftbox",
+            successMessage: "We’ll get in touch with you soon.",
           },
         },
         ghostConfig: {

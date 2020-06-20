@@ -1,7 +1,27 @@
 import React, { useState } from "react";
 import { useForm } from "../hook/useForm";
+import { useStaticQuery, graphql } from "gatsby";
 
 const ContactForm = () => {
+
+  const {
+    ghostSettings: { title },
+    site: {siteMetadata: {contactWidget}}
+  } = useStaticQuery(graphql`
+    query {
+      ghostSettings {
+        title
+      }
+      site {
+        siteMetadata {
+          contactWidget {
+            title
+            successMessage
+          }
+        }
+      }
+    }
+  `);
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -38,11 +58,15 @@ const ContactForm = () => {
       <main className="content">
         <div className="inner">
           {succeeded && (
-            <div className="post-title">We’ll get in touch with you soon.</div>
+            <div className="post-title">
+              {contactWidget.successMessage ? contactWidget.successMessage : `We'll get in touch with you soon.`}
+            </div>
           )}
           {!succeeded && (
             <>
-              <div className="post-title">Contact</div>
+              <div className="post-title">
+                <span dangerouslySetInnerHTML={{ __html: contactWidget.title ? contactWidget.title : `Contact ` + title }}></span>
+              </div>
               <form className="form-content" onSubmit={e => handleSubmit(e)}>
                 <div>
                   <label htmlFor="name">Name</label>
