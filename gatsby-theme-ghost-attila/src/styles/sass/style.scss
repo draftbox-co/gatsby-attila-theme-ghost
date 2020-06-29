@@ -1129,6 +1129,7 @@ input[type="password"] {
   padding: 0 8rem;
   @media only screen and (max-width: $breakpoint-medium) {
     padding: 0 4rem;
+    max-width: 100%;
   }
 }
 /* ==========================================================================

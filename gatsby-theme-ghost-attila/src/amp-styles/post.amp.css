@@ -636,3 +636,36 @@ select {
   float: left;
   width: 45%;
 }
+
+amp-img img {
+  object-fit: contain;
+}
+
+.tags .tag {
+  margin-left: 10px;
+  color: cornflowerblue;
+}
+
+.tag:hover {
+  color: black;
+}
+
+.comment-button-container {
+  margin: 2.25rem auto;
+  text-align: center;
+}
+
+.comment-button-container button {
+  background: transparent;
+  border-style: solid;
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: darkgray;
+  padding: 8px 22px;
+}
+
+.comment-button-container a {
+  color: cornflowerblue;
+  font-weight: 600;
+  text-decoration: none;
+}

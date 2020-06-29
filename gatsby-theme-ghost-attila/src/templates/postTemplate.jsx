@@ -255,10 +255,10 @@ const PostTemplate = ({ data, location, pageContext }) => {
                 </aside>
               </div>
             </article>
-            <div className="inner" style={{ marginTop: "20px" }}>
+            <div className="inner embed-ghost" style={{ marginTop: "20px" }}>
               <Disqus slug={pageContext.slug} title={data.ghostPost.title} />
             </div>
-            <div className="inner" style={{ marginTop: "20px", width: "100%" }}>
+            <div className="inner embed-facebook" style={{ marginTop: "20px" }}>
               <FbComments slug={pageContext.slug} title={data.ghostPost.title} href={href} />
             </div>
           </main>
