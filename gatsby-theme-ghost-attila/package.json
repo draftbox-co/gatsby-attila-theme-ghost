@@ -1,7 +1,7 @@
 {
   "name": "@draftbox-co/gatsby-theme-ghost-attila",
   "description": "A Gatsby theme plugin for creating blogs from headless Ghost CMS.",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "license": "MIT",
   "author": "Draftbox",
   "homepage": "https://github.com/draftbox-co/gatsby-attila-theme-ghost",

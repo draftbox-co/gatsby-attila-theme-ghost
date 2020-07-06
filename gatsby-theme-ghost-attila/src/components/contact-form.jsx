@@ -8,9 +8,6 @@ const ContactForm = () => {
     site: { siteTitle, siteMetadata: {contactWidget} }
   } = useStaticQuery(graphql`
     query {
-      ghostSettings {
-        title
-      }
       site {
         siteMetadata {
           siteTitle
