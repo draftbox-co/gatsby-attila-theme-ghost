@@ -17,7 +17,7 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
 
   const author = getAuthorProperties(ghostPost.primary_author);
   const publicTags = _.map(
-    tagsHelper(ghostPost, { visibility: `public`, fn: tag => tag }),
+    tagsHelper(ghostPost, { visibility: `public`, fn: (tag) => tag }),
     `name`
   );
   const primaryTag = publicTags[0] || ``;
@@ -45,7 +45,7 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
       "@type": `Person`,
       name: author.name,
       image: author.image ? author.image : undefined,
-      sameAs: author.sameAsArray ? author.sameAsArray : undefined
+      sameAs: author.sameAsArray ? author.sameAsArray : undefined,
     },
     keywords: publicTags.length ? publicTags.join(`, `) : undefined,
     headline: ghostPost.meta_title || ghostPost.title,
@@ -57,7 +57,7 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
           "@type": `ImageObject`,
           url: shareImage,
           width: config.shareImageWidth,
-          height: config.shareImageHeight
+          height: config.shareImageHeight,
         }
       : undefined,
     publisher: {
@@ -67,19 +67,21 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
         "@type": `ImageObject`,
         url: publisherLogo,
         width: 60,
-        height: 60
-      }
+        height: 60,
+      },
     },
     description: ghostPost.meta_description || ghostPost.excerpt,
     mainEntityOfPage: {
       "@type": `WebPage`,
-      "@id": config.siteUrl
-    }
+      "@id": config.siteUrl,
+    },
   };
 
   return (
     <>
-      <Helmet htmlAttributes={{"lang": config.language ? config.language : "auto"}}>
+      <Helmet
+        htmlAttributes={{ lang: config.language ? config.language : "auto" }}
+      >
         <title>{ghostPost.meta_title || ghostPost.title}</title>
         {!amp && <link rel="ampHtml" href={`${canonical}/amp`} />}
         <meta
@@ -105,6 +107,9 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
           }
         />
         <meta property="og:url" content={canonical} />
+        {config.facebookCard.appId !== "" && (
+          <meta property="fb:app_id" content={config.facebookCard.appId} />
+        )}
         <meta
           property="article:published_time"
           content={ghostPost.published_at}
@@ -138,10 +143,7 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
         {primaryTag && <meta name="twitter:data2" content={primaryTag} />}
 
         {config.twitterCard.username && (
-          <meta
-            name="twitter:site"
-            content={config.twitterCard.username}
-          />
+          <meta name="twitter:site" content={config.twitterCard.username} />
         )}
         {/* {settings.twitter && (
           <meta name="twitter:creator" content={settings.twitter} />
@@ -171,29 +173,29 @@ ArticleMetaGhost.propTypes = {
       PropTypes.shape({
         name: PropTypes.string,
         slug: PropTypes.string,
-        visibility: PropTypes.string
+        visibility: PropTypes.string,
       })
     ),
     primaryTag: PropTypes.shape({
-      name: PropTypes.string
+      name: PropTypes.string,
     }),
     og_title: PropTypes.string,
     og_description: PropTypes.string,
     twitter_title: PropTypes.string,
     twitter_description: PropTypes.string,
-    excerpt: PropTypes.string.isRequired
+    excerpt: PropTypes.string.isRequired,
   }).isRequired,
   settings: PropTypes.shape({
     logo: PropTypes.object,
     title: PropTypes.string,
     twitter: PropTypes.string,
     allGhostSettings: PropTypes.object.isRequired,
-    site: PropTypes.object.isRequired
+    site: PropTypes.object.isRequired,
   }).isRequired,
-  canonical: PropTypes.string.isRequired
+  canonical: PropTypes.string.isRequired,
 };
 
-const ArticleMetaQuery = props => (
+const ArticleMetaQuery = (props) => (
   <StaticQuery
     query={graphql`
       query GhostSettingsArticleMeta {
@@ -211,7 +213,7 @@ const ArticleMetaQuery = props => (
         }
       }
     `}
-    render={data => <ArticleMetaGhost settings={data} {...props} />}
+    render={(data) => <ArticleMetaGhost settings={data} {...props} />}
   />
 );
 

@@ -4,25 +4,11 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 const Navbar = () => {
   const data = useStaticQuery(graphql`
     query {
-      allGhostSettings {
-        edges {
-          node {
-            logo
-            twitter
-            facebook
-            cover_image
-            title
-            navigation {
-              label
-              url
-            }
-          }
-        }
-      }
       site {
         siteMetadata {
           siteUrl
           apiUrl
+          logoUrl
           header {
             navigation {
               url
@@ -61,7 +47,7 @@ const Navbar = () => {
                 title={siteMetadata.siteTitle}
                 aria-label={siteMetadata.siteTitle}
               >
-                <img src={siteMetadata.logoUrl} alt="" />
+                <img src={`/${siteMetadata.logoUrl}`} alt="" />
               </Link>
             )}
           </span>
