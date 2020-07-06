@@ -13,6 +13,7 @@
     "@draftbox-co/gatsby-theme-ghost-attila": "^1.0.0",
     "disqus-react": "^1.0.7",
     "gatsby": "2.20.24",
+    "node-fetch": "^2.6.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-facebook": "^8.1.4"
