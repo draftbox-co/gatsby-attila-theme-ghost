@@ -82,7 +82,7 @@ module.exports = {
             description:
               "Lightning fast, secure front-end for your WordPress or Ghost blog, without coding. Draftbox is a new-age blogging platform for everyone, built on Gatsby.",
             imageUrl: "facebookImage.png",
-            appId: "2391725224459953",
+            appId: "",
             width: 1000,
             height: 523,
           },

@@ -41,12 +41,14 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
   const jsonLd = {
     "@context": `https://schema.org/`,
     "@type": `Article`,
-    author: {
-      "@type": `Person`,
-      name: author.name,
-      image: author.image ? author.image : undefined,
-      sameAs: author.sameAsArray ? author.sameAsArray : undefined,
-    },
+    author: author
+      ? {
+          "@type": `Person`,
+          name: author.name,
+          image: author.image ? author.image : undefined,
+          sameAs: author.sameAsArray ? author.sameAsArray : undefined,
+        }
+      : null,
     keywords: publicTags.length ? publicTags.join(`, `) : undefined,
     headline: ghostPost.meta_title || ghostPost.title,
     url: canonical,
@@ -137,8 +139,12 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
           }
         />
         <meta name="twitter:url" content={canonical} />
-        <meta name="twitter:label1" content="Written by" />
-        <meta name="twitter:data1" content={author.name} />
+        {author && (
+          <>
+            <meta name="twitter:label1" content="Written by" />
+            <meta name="twitter:data1" content={author.name} />
+          </>
+        )}
         {primaryTag && <meta name="twitter:label2" content="Filed under" />}
         {primaryTag && <meta name="twitter:data2" content={primaryTag} />}
 
