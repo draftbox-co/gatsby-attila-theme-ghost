@@ -13,7 +13,7 @@ module.exports = themeOptions => {
   : ghostConfig.production;
 
   siteConfig.apiUrl = finalConfig.apiUrl;
-
+  console.log('what is', siteConfig);
   return {
     siteMetadata: siteConfig,
     plugins: [
@@ -75,12 +75,10 @@ module.exports = themeOptions => {
           icon: `static/${siteConfig.siteIcon}`,
           legacy: true,
           query: `{
-            allGhostSettings {
-              edges {
-                node {
-                  title
-                  description
-                }
+            site {
+              siteMetadata {
+                siteTitle
+                siteDescription
               }
             }
           }`

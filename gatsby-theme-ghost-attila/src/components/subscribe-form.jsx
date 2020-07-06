@@ -24,6 +24,7 @@ const SubscribeForm = () => {
       }
       site {
         siteMetadata {
+          siteTitle
           subscribeWidget {
             title
             helpText
@@ -34,12 +35,13 @@ const SubscribeForm = () => {
     }
   `);
 
-  const {
-    allGhostSettings: { edges },
-  } = data;
+  // const {
+  //   allGhostSettings: { edges },
+  // } = data;
 
-  const siteSettings = edges[0].node;
+  //const siteSettings = edges[0].node;
   const subscribeWidget = data.site.siteMetadata.subscribeWidget;
+  const siteTitle = data.site.siteMetadata.siteTitle;
   const [{ handleSubmit, submitting, succeeded }] = useForm("subscribe");
 
   const [email, setEmail] = useState();
@@ -56,14 +58,14 @@ const SubscribeForm = () => {
           <h1
             className="subscribe-title"
             dangerouslySetInnerHTML={{
-              __html: `${subscribeWidget.successMessage ? subscribeWidget.successMessage : 'You’ve successfully subscribed to ' + siteSettings.title + '.'}`,
+              __html: `${subscribeWidget.successMessage ? subscribeWidget.successMessage : 'You’ve successfully subscribed to ' + siteTitle + '.'}`,
             }}
           ></h1>
         )}
         {!succeeded && (
           <>
             <h1 className="subscribe-title">
-              {subscribeWidget.title ? subscribeWidget.title : "Subscribe to " + siteSettings.title}
+              {subscribeWidget.title ? subscribeWidget.title : "Subscribe to " + siteTitle}
             </h1>
             <p className="subscribe-description">
             {subscribeWidget.helpText ? subscribeWidget.helpText: `Get the latest posts delivered right to your inbox.`}

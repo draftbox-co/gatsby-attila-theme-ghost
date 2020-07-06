@@ -20,14 +20,28 @@ const Header = () => {
           }
         }
       }
+      site {
+        siteMetadata {
+          siteTitle
+          siteUrl
+          apiUrl
+          footer {
+            copyright
+            navigation {
+              label
+              url
+            }
+          }
+        }
+      }
     }
   `);
 
   const {
-    allGhostSettings: { edges },
+    site: { siteMetadata }
   } = data;
 
-  const siteSettings = edges[0].node;
+  //const siteSettings = edges[0].node;
   return (
     <>
       <header className="blog-header">
@@ -35,11 +49,11 @@ const Header = () => {
           <div className="box blog-box">
             <h1
               className="blog-name break-words"
-              dangerouslySetInnerHTML={{ __html: siteSettings.title }}
+              dangerouslySetInnerHTML={{ __html: siteMetadata.siteTitle }}
             ></h1>
             <span
               className="blog-description break-words"
-              dangerouslySetInnerHTML={{ __html: siteSettings.description }}
+              dangerouslySetInnerHTML={{ __html: siteMetadata.siteDescription }}
             ></span>
           </div>
           <div className="blog-cover cover"></div>

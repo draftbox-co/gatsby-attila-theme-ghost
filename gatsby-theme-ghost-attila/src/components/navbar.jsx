@@ -42,11 +42,10 @@ const Navbar = () => {
   `);
 
   const {
-    allGhostSettings: { edges },
     site: { siteMetadata },
   } = data;
 
-  const siteSettings = edges[0].node;
+  //const siteSettings = edges[0].node;
   const siteUrl = siteMetadata.siteUrl;
   const apiUrl = siteMetadata.apiUrl;
   const navigation = siteMetadata.header.navigation;
@@ -56,13 +55,13 @@ const Navbar = () => {
       <div className="nav-header">
         <nav className="nav-wrapper">
           <span className="logo">
-            {siteSettings.logo && (
+            {siteMetadata.logoUrl && (
               <Link
                 to="/"
-                title={siteSettings.title}
-                aria-label={siteSettings.title}
+                title={siteMetadata.siteTitle}
+                aria-label={siteMetadata.siteTitle}
               >
-                <img src={siteSettings.logo} alt="" />
+                <img src={siteMetadata.logoUrl} alt="" />
               </Link>
             )}
           </span>

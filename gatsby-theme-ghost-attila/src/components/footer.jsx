@@ -10,6 +10,7 @@ const Footer = () => {
       }
       site {
         siteMetadata {
+          siteTitle
           siteUrl
           apiUrl
           footer {
@@ -28,6 +29,7 @@ const Footer = () => {
   const siteUrl = data.site.siteMetadata.siteUrl;
   const apiUrl = data.site.siteMetadata.apiUrl;
   const copyright = data.site.siteMetadata.footer.copyright;
+  const siteTitle = data.site.siteMetadata.siteTitle;
 
   return (
     <>
@@ -36,7 +38,7 @@ const Footer = () => {
           <span className="nav-copy">
             <span
               dangerouslySetInnerHTML={{
-                __html: copyright ? copyright : data.ghostSettings.title,
+                __html: copyright ? copyright : siteTitle,
               }}
             ></span>{" "}
             &copy; {new Date().getFullYear()}

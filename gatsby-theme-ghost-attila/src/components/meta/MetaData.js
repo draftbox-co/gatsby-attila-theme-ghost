@@ -58,9 +58,9 @@ const MetaData = ({
             />
         )
     } else {
-        title = title || config.siteTitleMeta || settings.title
-        description = description || config.siteDescriptionMeta || settings.description
-        image = image || settings.cover_image || null
+        title = title || config.siteTitle
+        description = description || config.siteDescription
+        image = image || config.coverUrl || null
 
         image = image ? url.resolve(config.siteUrl, image) : null
 

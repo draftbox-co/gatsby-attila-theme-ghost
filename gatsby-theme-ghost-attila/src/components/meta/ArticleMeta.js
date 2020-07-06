@@ -22,11 +22,20 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
   );
   const primaryTag = publicTags[0] || ``;
   const shareImage = ghostPost.feature_image
-    ? ghostPost.feature_image
-    : _.get(settings, `cover_image`, null);
+    ? url.resolve(config.siteUrl, ghostPost.feature_image)
+    : config.coverUrl ||
+      config.facebookCard.imageUrl ||
+      config.twitterCard.imageUrl
+    ? url.resolve(
+        config.siteUrl,
+        config.coverUrl ||
+          config.facebookCard.imageUrl ||
+          config.twitterCard.imageUrl
+      )
+    : null;
   const publisherLogo =
-    settings.logo || config.siteIcon
-      ? url.resolve(config.siteUrl, settings.logo || config.siteIcon)
+    config.logoUrl || settings.logo
+      ? url.resolve(config.siteUrl, config.logoUrl || settings.logo)
       : null;
 
   const jsonLd = {
@@ -70,7 +79,7 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
 
   return (
     <>
-      <Helmet htmlAttributes={{"lang": settings.lang ? settings.lang : "auto"}}>
+      <Helmet htmlAttributes={{"lang": config.language ? config.language : "auto"}}>
         <title>{ghostPost.meta_title || ghostPost.title}</title>
         {!amp && <link rel="ampHtml" href={`${canonical}/amp`} />}
         <meta
@@ -128,17 +137,17 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
         {primaryTag && <meta name="twitter:label2" content="Filed under" />}
         {primaryTag && <meta name="twitter:data2" content={primaryTag} />}
 
-        {settings.twitter && (
+        {config.twitterCard.username && (
           <meta
             name="twitter:site"
-            content={`https://twitter.com/${settings.twitter.replace(
-              /^@/,
-              ``
-            )}/`}
+            content={config.twitterCard.username}
           />
         )}
-        {settings.twitter && (
+        {/* {settings.twitter && (
           <meta name="twitter:creator" content={settings.twitter} />
+        )} */}
+        {author.twitter && (
+          <meta name="twitter:creator" content={author.twitter} />
         )}
         <script type="application/ld+json">
           {JSON.stringify(jsonLd, undefined, 4)}

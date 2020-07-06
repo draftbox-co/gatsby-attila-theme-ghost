@@ -119,6 +119,7 @@ exports.createPages = async ({ graphql, actions }) => {
       site {
         siteMetadata {
           postsPerPage
+          siteTitle
         }
       }
 
@@ -139,7 +140,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const pages = result.data.allGhostPage.edges;
   const posts = result.data.allGhostPost.edges;
   const postsPerPage = result.data.site.siteMetadata.postsPerPage;
-  const websiteTitle = result.data.ghostSettings.title;
+  const websiteTitle = result.data.site.siteMetadata.siteTitle;
+  //const websiteTitle = result.data.ghostSettings.title;
 
   // Load templates
   const indexTemplate = require.resolve(`./src/templates/indexTemplate.jsx`);

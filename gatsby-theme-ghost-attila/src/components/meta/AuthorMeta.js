@@ -1,7 +1,8 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+//import _ from 'lodash'
+import url from "url"
 import { StaticQuery, graphql } from 'gatsby'
 
 import ImageMeta from './ImageMeta'
@@ -12,9 +13,20 @@ const AuthorMeta = ({ data, settings, canonical }) => {
     settings = settings.allGhostSettings.edges[0].node
 
     const author = getAuthorProperties(data)
-    const shareImage = author.image || _.get(settings, `cover_image`, null)
-    const title = `${data.name} - ${settings.title}`
-    const description = data.bio || config.siteDescriptionMeta || settings.description
+    const shareImage = author.image
+    ? url.resolve(config.siteUrl, author.image)
+    : config.coverUrl ||
+      config.facebookCard.imageUrl ||
+      config.twitterCard.imageUrl
+    ? url.resolve(
+        config.siteUrl,
+        config.coverUrl ||
+          config.facebookCard.imageUrl ||
+          config.twitterCard.imageUrl
+      )
+    : null;
+    const title = `${data.name} - ${config.siteTitle}`
+    const description = data.bio || config.siteDescription || settings.description
 
     const jsonLd = {
         "@context": `https://schema.org/`,
@@ -37,11 +49,11 @@ const AuthorMeta = ({ data, settings, canonical }) => {
 
     return (
         <>
-            <Helmet htmlAttributes={{"lang": settings.lang ? settings.lang : "auto"}}>
+            <Helmet htmlAttributes={{"lang": config.language ? config.language : "auto"}}>
                 <title>{title}</title>
                 <meta name="description" content={description} />
                 <link rel="canonical" href={canonical} />
-                <meta property="og:site_name" content={settings.title} />
+                <meta property="og:site_name" content={config.siteTitle} />
                 <meta property="og:type" content="profile" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
@@ -49,8 +61,8 @@ const AuthorMeta = ({ data, settings, canonical }) => {
                 <meta name="twitter:title" content={title} />
                 <meta name="twitter:description" content={description} />
                 <meta name="twitter:url" content={canonical} />
-                {settings.twitter && <meta name="twitter:site" content={`https://twitter.com/${settings.twitter.replace(/^@/, ``)}/`} />}
-                {settings.twitter && <meta name="twitter:creator" content={settings.twitter} />}
+                {config.twitterCard.username && <meta name="twitter:site" content={`https://twitter.com/${config.twitterCard.username.replace(/^@/, ``)}/`} />}
+                {config.twitterCard.username && <meta name="twitter:creator" content={config.twitterCard.usernamer} />}
                 <script type="application/ld+json">{JSON.stringify(jsonLd, undefined, 4)}</script>
             </Helmet>
             <ImageMeta image={shareImage} />

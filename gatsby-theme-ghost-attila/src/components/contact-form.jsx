@@ -5,8 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 const ContactForm = () => {
 
   const {
-    ghostSettings: { title },
-    site: {siteMetadata: {contactWidget}}
+    site: { siteTitle, siteMetadata: {contactWidget} }
   } = useStaticQuery(graphql`
     query {
       ghostSettings {
@@ -14,6 +13,7 @@ const ContactForm = () => {
       }
       site {
         siteMetadata {
+          siteTitle
           contactWidget {
             title
             successMessage
@@ -65,7 +65,7 @@ const ContactForm = () => {
           {!succeeded && (
             <>
               <div className="post-title">
-                <span dangerouslySetInnerHTML={{ __html: contactWidget.title ? contactWidget.title : `Contact ` + title }}></span>
+                <span dangerouslySetInnerHTML={{ __html: contactWidget.title ? contactWidget.title : `Contact ` + siteTitle }}></span>
               </div>
               <form className="form-content" onSubmit={e => handleSubmit(e)}>
                 <div>

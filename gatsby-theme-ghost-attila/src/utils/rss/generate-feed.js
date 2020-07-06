@@ -59,9 +59,9 @@ const generateRSSFeed = function generateRSSFeed(siteConfig) {
         Object.assign({}, generateItem(edge.node))
       ),
     setup: ({ query: { allGhostSettings } }) => {
-      const siteTitle = allGhostSettings.edges[0].node.title || `No Title`;
+      const siteTitle = siteConfig.siteTitle || `No Title`;
       const siteDescription =
-        allGhostSettings.edges[0].node.description || `No Description`;
+        siteConfig.siteDescription || `No Description`;
       const feed = {
         title: siteTitle,
         description: siteDescription,

@@ -45,7 +45,7 @@ exports.onPostBuild = function _callee(_ref, pluginOptions) {
         case 4:
           _ref2 = _context.sent;
           data = _ref2.data;
-          siteTitle = data.allGhostSettings.edges[0].node.title || "No Title";
+          siteTitle = data.site.siteMetadata.siteTitle || "No Title";
           manifest = (0, _extends2.default)({}, manifest, {
             name: siteTitle
           }); // Delete options we won't pass to the manifest.webmanifest.
