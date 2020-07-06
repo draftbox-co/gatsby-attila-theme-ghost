@@ -3,9 +3,11 @@ import { useForm } from "../hook/useForm";
 import { useStaticQuery, graphql } from "gatsby";
 
 const ContactForm = () => {
-
   const {
-    site: { siteTitle, siteMetadata: {contactWidget} }
+    site: {
+      siteTitle,
+      siteMetadata: { contactWidget },
+    },
   } = useStaticQuery(graphql`
     query {
       site {
@@ -22,14 +24,14 @@ const ContactForm = () => {
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
 
   const [{ handleSubmit: submitForm, submitting, succeeded }] = useForm(
     "contact"
   );
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     submitForm(formValues);
   };
@@ -56,19 +58,27 @@ const ContactForm = () => {
         <div className="inner">
           {succeeded && (
             <div className="post-title">
-              {contactWidget.successMessage ? contactWidget.successMessage : `We'll get in touch with you soon.`}
+              {contactWidget.successMessage
+                ? contactWidget.successMessage
+                : `We'll get in touch with you soon.`}
             </div>
           )}
           {!succeeded && (
             <>
               <div className="post-title">
-                <span dangerouslySetInnerHTML={{ __html: contactWidget.title ? contactWidget.title : `Contact ` + siteTitle }}></span>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: contactWidget.title
+                      ? contactWidget.title
+                      : `Contact ` + siteTitle,
+                  }}
+                ></span>
               </div>
-              <form className="form-content" onSubmit={e => handleSubmit(e)}>
+              <form className="form-content" onSubmit={(e) => handleSubmit(e)}>
                 <div>
                   <label htmlFor="name">Name</label>
                   <input
-                    onChange={e => handleChange(e.target.id, e.target.value)}
+                    onChange={(e) => handleChange(e.target.id, e.target.value)}
                     id="name"
                     type="text"
                     placeholder="Your name (optional)"
@@ -78,7 +88,7 @@ const ContactForm = () => {
                 <div>
                   <label htmlFor="email">Email</label>
                   <input
-                    onChange={e => handleChange(e.target.id, e.target.value)}
+                    onChange={(e) => handleChange(e.target.id, e.target.value)}
                     required
                     id="email"
                     type="email"
@@ -91,7 +101,7 @@ const ContactForm = () => {
                   required
                   maxLength="180"
                   rows="4"
-                  onChange={e => handleChange(e.target.id, e.target.value)}
+                  onChange={(e) => handleChange(e.target.id, e.target.value)}
                   id="message"
                   placeholder="Your message"
                 />
