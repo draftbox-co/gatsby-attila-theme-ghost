@@ -4,22 +4,6 @@ import { useStaticQuery, graphql } from "gatsby";
 const Header = () => {
   const data = useStaticQuery(graphql`
     query {
-      allGhostSettings {
-        edges {
-          node {
-            logo
-            title
-            twitter
-            facebook
-            cover_image
-            description
-            navigation {
-              label
-              url
-            }
-          }
-        }
-      }
       site {
         siteMetadata {
           siteTitle
