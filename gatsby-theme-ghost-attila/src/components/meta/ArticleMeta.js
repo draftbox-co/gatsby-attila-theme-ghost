@@ -139,12 +139,8 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
           }
         />
         <meta name="twitter:url" content={canonical} />
-        {author && (
-          <>
-            <meta name="twitter:label1" content="Written by" />
-            <meta name="twitter:data1" content={author.name} />
-          </>
-        )}
+        {author && <meta name="twitter:label1" content="Written by" />}
+        {author && <meta name="twitter:data1" content={author.name} />}
         {primaryTag && <meta name="twitter:label2" content="Filed under" />}
         {primaryTag && <meta name="twitter:data2" content={primaryTag} />}
 

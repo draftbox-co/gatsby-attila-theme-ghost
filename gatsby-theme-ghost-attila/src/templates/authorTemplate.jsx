@@ -26,7 +26,7 @@ const AuthorTemplate = ({ data, pageContext }) => {
 
             {data.ghostAuthor.bio && (
               <span
-                className="archive-description break-wordsF"
+                className="archive-description break-words"
                 dangerouslySetInnerHTML={{ __html: data.ghostAuthor.bio }}
               ></span>
             )}
@@ -48,7 +48,7 @@ const AuthorTemplate = ({ data, pageContext }) => {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href={data.ghostAuthor.twitter}
+                  href={`https://twitter.com/${data.ghostAuthor.twitter}`}
                   title="Twitter"
                 >
                   <i className="icon icon-twitter"></i>
@@ -59,7 +59,7 @@ const AuthorTemplate = ({ data, pageContext }) => {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href={data.ghostAuthor.facebook}
+                  href={`https://facebook.com/${data.ghostAuthor.facebook}`}
                   title="Facebook}"
                 >
                   <i className="icon icon-facebook"></i>

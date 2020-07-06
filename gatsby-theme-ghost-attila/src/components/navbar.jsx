@@ -1,5 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
+import url from "url";
 
 const Navbar = () => {
   const data = useStaticQuery(graphql`
@@ -47,7 +48,13 @@ const Navbar = () => {
                 title={siteMetadata.siteTitle}
                 aria-label={siteMetadata.siteTitle}
               >
-                <img src={`/${siteMetadata.logoUrl}`} alt="" />
+                <img
+                  src={`${url.resolve(
+                    siteMetadata.siteUrl,
+                    siteMetadata.logoUrl
+                  )}`}
+                  alt=""
+                />
               </Link>
             )}
           </span>
