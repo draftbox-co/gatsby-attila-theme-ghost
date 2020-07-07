@@ -10,7 +10,6 @@ import url from 'url'
 const WebsiteMeta = ({ data, settings, canonical, title, description, image, type }) => {
     const config = settings.site.siteMetadata
     settings = settings.allGhostSettings.edges[0].node
-    console.log({ config });
     const publisherLogo = url.resolve(config.siteUrl, config.logoUrl)
     let shareImage = config.coverUrl || config.facebookCard.imageUrl || config.twitterCard.imageUrl;
     shareImage = shareImage ? url.resolve(config.siteUrl, shareImage) : null;
