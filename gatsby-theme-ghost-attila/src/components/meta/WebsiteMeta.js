@@ -10,7 +10,7 @@ import url from 'url'
 const WebsiteMeta = ({ data, settings, canonical, title, description, image, type }) => {
     const config = settings.site.siteMetadata
     settings = settings.allGhostSettings.edges[0].node
-    const publisherLogo = url.resolve(config.siteUrl, config.logoUrl)
+    const publisherLogo = url.resolve(config.siteUrl, config.logoUrl || config.alternateLogoUrl)
     let shareImage = config.coverUrl || config.facebookCard.imageUrl || config.twitterCard.imageUrl;
     shareImage = shareImage ? url.resolve(config.siteUrl, shareImage) : null;
 
@@ -42,7 +42,7 @@ const WebsiteMeta = ({ data, settings, canonical, title, description, image, typ
             "@type": `WebPage`,
             "@id": config.siteUrl,
         },
-        description: config.siteDescription,
+        description: config.metadata.description || config.siteDescription,
     }
 
     return (
@@ -88,8 +88,8 @@ const WebsiteMeta = ({ data, settings, canonical, title, description, image, typ
                 <meta name="twitter:url" content={canonical} />
                 {config.twitterCard.username && <meta name="twitter:site" content={config.twitterCard.username} />}
                 {config.twitterCard.username && <meta name="twitter:creator" content={config.twitterCard.username} />}
-                {config.twitterCard.imageUrl && <meta name="twitter:image" content={url.resolve(config.siteUrl, config.twitterCard.imageUrl)} />}
-                {config.twitterCard.imageUrl && <meta name="twitter:card" content="summary_large_image" />}
+                {config.twitterCard.imageUrl !== '' && <meta name="twitter:image" content={url.resolve(config.siteUrl, config.twitterCard.imageUrl)} />}
+                {config.twitterCard.imageUrl !== '' && <meta name="twitter:card" content="summary_large_image" />}
                 
                 <script type="application/ld+json">{JSON.stringify(jsonLd, undefined, 4)}</script>
             </Helmet>

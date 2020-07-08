@@ -1,5 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import url from "url";
+
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -7,7 +9,9 @@ const Header = () => {
       site {
         siteMetadata {
           siteTitle
+          siteDescription
           siteUrl
+          coverUrl
           apiUrl
           footer {
             copyright
@@ -40,7 +44,13 @@ const Header = () => {
               dangerouslySetInnerHTML={{ __html: siteMetadata.siteDescription }}
             ></span>
           </div>
-          <div className="blog-cover cover"></div>
+          <div className="blog-cover cover" 
+            style={{
+              backgroundImage: `url(${
+                siteMetadata.coverUrl ? url.resolve(siteMetadata.siteUrl, siteMetadata.coverUrl) : "none"
+              })`,
+            }}>
+          </div>
         </div>
       </header>
     </>

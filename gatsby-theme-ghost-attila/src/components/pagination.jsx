@@ -8,6 +8,7 @@ const Pagination = ({ pageContext }) => {
     humanPageNumber,
     numberOfPages
   } = pageContext;
+  console.log(numberOfPages, humanPageNumber, 'oi oi ');
   return (
     <nav className="pagination">
       <div className="inner">
@@ -28,7 +29,7 @@ const Pagination = ({ pageContext }) => {
           )}
 
           <span className="pagination-info">{`Page ${humanPageNumber} of ${numberOfPages}`}</span>
-          {numberOfPages > 1 && (
+          {(numberOfPages > 1 && nextPagePath) && (
             <Link
               title="Older Posts"
               className="pagination-prev"
