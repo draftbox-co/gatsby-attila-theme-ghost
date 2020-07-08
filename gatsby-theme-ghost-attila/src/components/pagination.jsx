@@ -8,7 +8,6 @@ const Pagination = ({ pageContext }) => {
     humanPageNumber,
     numberOfPages
   } = pageContext;
-  console.log(numberOfPages, humanPageNumber, 'oi oi ');
   return (
     <nav className="pagination">
       <div className="inner">
