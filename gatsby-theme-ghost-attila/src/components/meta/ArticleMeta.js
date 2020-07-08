@@ -64,7 +64,7 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
       : undefined,
     publisher: {
       "@type": `Organization`,
-      name: ghostPost.meta_title || ghostPost.title || config.siteTitle,
+      name: config.siteTitle,
       logo: {
         "@type": `ImageObject`,
         url: publisherLogo,
@@ -92,7 +92,7 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
         />
         {!amp && <link rel="canonical" href={canonical} />}
 
-        <meta property="og:site_name" content={ghostPost.meta_title || ghostPost.title || config.siteTitle} />
+        <meta property="og:site_name" content={config.siteTitle} />
         <meta property="og:type" content="article" />
         <meta
           property="og:title"
