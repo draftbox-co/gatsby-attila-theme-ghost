@@ -107,6 +107,11 @@ export const pageQuery = graphql`
             src
           }
         }
+        seo: childImageSharp {
+          fixed(width: 1200, quality: 100) {
+            src
+          }
+        }
         publicURL
         extension
       }

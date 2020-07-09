@@ -259,7 +259,11 @@ const PostTemplate = ({ data, location, pageContext }) => {
               <Disqus slug={pageContext.slug} title={data.ghostPost.title} />
             </div>
             <div className="inner embed-facebook" style={{ marginTop: "20px" }}>
-              <FbComments slug={pageContext.slug} title={data.ghostPost.title} href={href} />
+              <FbComments
+                slug={pageContext.slug}
+                title={data.ghostPost.title}
+                href={href}
+              />
             </div>
           </main>
           <SubscribeForm />
@@ -314,6 +318,11 @@ export const pageQuery = graphql`
         }
         publicURL
         extension
+        seo: childImageSharp {
+          fixed(width: 1200, quality: 100) {
+            src
+          }
+        }
       }
       url
       excerpt

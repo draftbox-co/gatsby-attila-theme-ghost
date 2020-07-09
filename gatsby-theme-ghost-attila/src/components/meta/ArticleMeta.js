@@ -21,8 +21,11 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
     `name`
   );
   const primaryTag = publicTags[0] || ``;
-  const shareImage = ghostPost.feature_image
-    ? url.resolve(config.siteUrl, ghostPost.feature_image)
+
+  const postHeroImage = ghostPost.localFeatureImage?.seo?.fixed?.src;
+
+  const shareImage = postHeroImage
+    ? url.resolve(config.siteUrl, postHeroImage)
     : config.coverUrl ||
       config.facebookCard.imageUrl ||
       config.twitterCard.imageUrl
@@ -33,9 +36,10 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
           config.twitterCard.imageUrl
       )
     : null;
+
   const publisherLogo =
-    config.logoUrl || settings.logo
-      ? url.resolve(config.siteUrl, config.logoUrl || settings.logo)
+    config.logoUrl || config.alternateLogoUrl
+      ? url.resolve(config.siteUrl, config.logoUrl || config.alternateLogoUrl)
       : null;
 
   const jsonLd = {
@@ -62,16 +66,18 @@ const ArticleMetaGhost = ({ data, settings, canonical, amp }) => {
           height: config.shareImageHeight,
         }
       : undefined,
-    publisher: {
-      "@type": `Organization`,
-      name: config.siteTitle,
-      logo: {
-        "@type": `ImageObject`,
-        url: publisherLogo,
-        width: 60,
-        height: 60,
-      },
-    },
+    publisher: publisherLogo
+      ? {
+          "@type": `Organization`,
+          name: config.siteTitle,
+          logo: {
+            "@type": `ImageObject`,
+            url: publisherLogo,
+            width: 60,
+            height: 60,
+          },
+        }
+      : undefined,
     description: ghostPost.meta_description || ghostPost.excerpt,
     mainEntityOfPage: {
       "@type": `WebPage`,
