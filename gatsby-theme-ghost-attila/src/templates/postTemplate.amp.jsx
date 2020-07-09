@@ -88,6 +88,14 @@ export const pageQuery = graphql`
     ghostPost(slug: { eq: $slug }) {
       title
       html
+      og_title
+      og_description
+      feature_image
+      excerpt
+      twitter_title
+      twitter_description
+      meta_title
+      meta_description
       primary_tag {
         name
         slug
