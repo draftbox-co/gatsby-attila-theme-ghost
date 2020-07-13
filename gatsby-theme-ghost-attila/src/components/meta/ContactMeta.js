@@ -42,7 +42,7 @@ const ContactMeta = ({ location }) => {
   const config = data.site.siteMetadata;
 
   const baseUrl = data.site.siteMetadata.siteUrl;
-  const siteTitle = `Contact | ${data.site.siteMetadata.siteTitle}`;
+  const siteTitle = data.site.siteMetadata.siteTitle;
 
   const canonical = url.resolve(baseUrl, location.pathname);
 
