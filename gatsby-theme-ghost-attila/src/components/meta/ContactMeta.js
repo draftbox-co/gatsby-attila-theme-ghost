@@ -71,7 +71,7 @@ const ContactMeta = ({ location }) => {
     "@context": `https://schema.org/`,
     "@type": "WebPage",
     url: canonical,
-    headline: 'Contact | ' + config.metadata.title || config.metadata.title,
+    headline: 'Contact | ' + config.metadata.title || config.siteTitle,
     image: shareImage
       ? {
           "@type": `ImageObject`,
