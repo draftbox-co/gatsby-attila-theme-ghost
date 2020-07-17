@@ -1,7 +1,7 @@
 {
   "name": "@draftbox-co/gatsby-theme-ghost-attila",
   "description": "A Gatsby theme plugin for creating blogs from headless Ghost CMS.",
-  "version": "1.0.39",
+  "version": "1.0.40",
   "license": "MIT",
   "author": "Draftbox",
   "homepage": "https://github.com/draftbox-co/gatsby-attila-theme-ghost",
@@ -51,7 +51,7 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
-    "@armada-inc/gatsby-plugin-amp": "^0.2.3",
+    "@draftbox-co/gatsby-plugin-amp": "^0.2.4",
     "@tryghost/helpers": "^1.1.22",
     "@tryghost/url-utils": "^0.6.13",
     "autoprefixer": "^9.7.4",
@@ -69,7 +69,7 @@
     "gatsby-plugin-feed": "^2.3.27",
     "gatsby-plugin-force-trailing-slashes": "^1.0.4",
     "gatsby-plugin-manifest": "^2.2.42",
-    "gatsby-plugin-offline": "^3.0.35",
+    "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-page-creator": "^2.1.40",
     "gatsby-plugin-postcss": "^2.1.20",
     "gatsby-plugin-react-helmet": "^3.1.22",
