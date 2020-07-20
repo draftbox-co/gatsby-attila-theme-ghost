@@ -9,18 +9,9 @@ import Disqus from "../components/disqus";
 import FbComments from "../components/fb-comments";
 import CopyLink from "../components/copy-link";
 import "../styles/prism-theme/prism_dracula.scss";
-import { InView } from "react-intersection-observer";
 
 const PostTemplate = ({ data, location, pageContext }) => {
   const [href, sethref] = useState("");
-
-  const [showComments, setshowComments] = useState(false);
-
-  const handleCommentsVisibility = (inView) => {
-    if (inView && !showComments) {
-      setshowComments(true);
-    }
-  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -264,34 +255,15 @@ const PostTemplate = ({ data, location, pageContext }) => {
                 </aside>
               </div>
             </article>
-            <InView
-              as="div"
-              onChange={(inView) => handleCommentsVisibility(inView)}
-            ></InView>
-            <div>
-              {showComments && (
-                <div
-                  className="inner embed-ghost"
-                  style={{ marginTop: "20px" }}
-                >
-                  <Disqus
-                    slug={pageContext.slug}
-                    title={data.ghostPost.title}
-                  />
-                </div>
-              )}
-              {showComments && (
-                <div
-                  className="inner embed-facebook"
-                  style={{ marginTop: "20px" }}
-                >
-                  <FbComments
-                    slug={pageContext.slug}
-                    title={data.ghostPost.title}
-                    href={href}
-                  />
-                </div>
-              )}
+            <div className="inner embed-ghost" style={{ marginTop: "20px" }}>
+              <Disqus slug={pageContext.slug} title={data.ghostPost.title} />
+            </div>
+            <div className="inner embed-facebook" style={{ marginTop: "20px" }}>
+              <FbComments
+                slug={pageContext.slug}
+                title={data.ghostPost.title}
+                href={href}
+              />
             </div>
           </main>
           <SubscribeForm />
