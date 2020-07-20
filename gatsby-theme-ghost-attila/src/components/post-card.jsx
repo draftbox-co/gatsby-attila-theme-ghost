@@ -12,7 +12,11 @@ const PostCard = ({ post }) => {
     <div id={post.uuid} className="container">
       <main className="content" role="main">
         <div>
-          <article className={`post tag-getting-started ${post.featured ? 'featured' : ''}`}>
+          <article
+            className={`post tag-getting-started ${
+              post.featured ? "featured" : ""
+            }`}
+          >
             <div className="inner">
               <div className="box post-box">
                 <h2 className="post-title">
@@ -26,16 +30,16 @@ const PostCard = ({ post }) => {
                 <span className="post-meta">
                   By{" "}
                   {post.authors.map((author, index) => (
-                    <>
-                    <Link
-                      key={index}
-                      className="post-meta-tag"
-                      to={`/author/${author.slug}`}
-                    >
-                      {author.name}
-                    </Link>
-                    {index !== post.authors.length - 1 ? ", " : ""}
-                    </>
+                    <React.Fragment key={index}>
+                      <Link
+                        key={index}
+                        className="post-meta-tag"
+                        to={`/author/${author.slug}`}
+                      >
+                        {author.name}
+                      </Link>
+                      {index !== post.authors.length - 1 ? ", " : ""}
+                    </React.Fragment>
                   ))}
                   {post.tags.length > 0 && " in "}
                   {post.tags.map((tag, index) => (
