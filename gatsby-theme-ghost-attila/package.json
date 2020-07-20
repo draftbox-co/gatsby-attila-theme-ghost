@@ -1,7 +1,7 @@
 {
   "name": "@draftbox-co/gatsby-theme-ghost-attila",
   "description": "A Gatsby theme plugin for creating blogs from headless Ghost CMS.",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "license": "MIT",
   "author": "Draftbox",
   "homepage": "https://github.com/draftbox-co/gatsby-attila-theme-ghost",
@@ -10,9 +10,6 @@
     "type": "git"
   },
   "main": "index.js",
-  "resolutions": {
-    "sharp": "0.23.4"
-  },
   "engines": {
     "node": ">= 8.9.0"
   },
@@ -38,15 +35,15 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.5.0",
     "eslint-plugin-ghost": "^1.0.0",
     "eslint-plugin-react": "^7.18.3",
-    "gatsby": "2.20.24",
+    "gatsby": "2.24.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "peerDependencies": {
-    "gatsby": "2.20.24",
+    "gatsby": "2.23.18",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
@@ -57,27 +54,27 @@
     "autoprefixer": "^9.7.4",
     "babel-plugin-prismjs": "^2.0.1",
     "babel-plugin-styled-components": "^1.10.7",
-    "babel-preset-gatsby": "^0.2.29",
+    "babel-preset-gatsby": "^0.5.2",
     "cheerio": "^1.0.0-rc.3",
     "cssnano": "^4.1.10",
     "disqus-react": "^1.0.8",
     "gatsby-awesome-pagination": "^0.3.5",
-    "gatsby-background-image": "^0.10.2",
+    "gatsby-background-image": "^1.1.1",
     "gatsby-image": "^2.2.41",
     "gatsby-plugin-advanced-sitemap": "^1.5.1",
     "gatsby-plugin-catch-links": "^2.1.26",
     "gatsby-plugin-feed": "^2.3.27",
     "gatsby-plugin-force-trailing-slashes": "^1.0.4",
     "gatsby-plugin-manifest": "^2.2.42",
-    "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-page-creator": "^2.1.40",
     "gatsby-plugin-postcss": "^2.1.20",
     "gatsby-plugin-react-helmet": "^3.1.22",
     "gatsby-plugin-remove-generator": "^1.0.5",
+    "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sass": "^2.1.29",
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-rehype-ghost-links": "^1.1.0",
-    "gatsby-rehype-prismjs": "^0.0.9",
+    "gatsby-rehype-prismjs": "^1.1.2",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-source-ghost": "^4.0.3",
     "gatsby-transformer-rehype": "^1.1.0",
@@ -85,7 +82,8 @@
     "lodash": "^4.17.15",
     "node-sass": "^4.13.1",
     "prismjs": "^1.19.0",
-    "react-helmet": "^5.2.1",
+    "react-helmet": "^6.1.0",
+    "react-intersection-observer": "^8.26.2",
     "reading-time": "^1.2.0",
     "styled-components": "^5.0.1"
   }
