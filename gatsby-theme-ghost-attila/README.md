@@ -52,7 +52,7 @@ If you want to add this blog theme to an existing site, follow these instruction
     module.exports = {
     plugins: [
         {
-        resolve: `@draftbox-co/gatsby-attila-theme-ghost`,
+        resolve: `@draftbox-co/gatsby-theme-ghost-attila`,
         options: {
             siteConfig: {
             siteUrl: `https://your-bog.com`,
