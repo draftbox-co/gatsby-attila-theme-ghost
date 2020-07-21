@@ -40,9 +40,9 @@ If you want to add this blog theme to an existing site, follow these instruction
 1. Install the blog theme
 
     ```bash
-    yarn add @draftbox-co/gatsby-attila-theme-ghost
+    yarn add @draftbox-co/gatsby-theme-ghost-attila
     # or
-    npm install @draftbox-co/gatsby-attila-theme-ghost --save
+    npm install @draftbox-co/gatsby-theme-ghost-attila --save
     ```
 
 2. Add the following configuration to your `gatsby-config.js` file
