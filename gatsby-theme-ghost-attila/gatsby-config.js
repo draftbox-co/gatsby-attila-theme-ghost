@@ -13,7 +13,6 @@ module.exports = themeOptions => {
   : ghostConfig.production;
 
   siteConfig.apiUrl = finalConfig.apiUrl;
-  console.log('what is', siteConfig);
   return {
     siteMetadata: siteConfig,
     plugins: [
