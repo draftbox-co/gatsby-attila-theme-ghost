@@ -72,7 +72,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
 
           <div className="comment-button-container">
             <button>
-              <a href={`/${data.ghostPost.slug}`}>Leave a comment</a>
+              <a href={`/${data.ghostPost.slug}`}>View original article</a>
             </button>
           </div>
         </article>
@@ -90,6 +90,7 @@ export const pageQuery = graphql`
       html
       og_title
       og_description
+      slug
       feature_image
       excerpt
       twitter_title

@@ -9,9 +9,18 @@ import Disqus from "../components/disqus";
 import FbComments from "../components/fb-comments";
 import CopyLink from "../components/copy-link";
 import "../styles/prism-theme/prism_dracula.scss";
+import { InView } from "react-intersection-observer";
 
 const PostTemplate = ({ data, location, pageContext }) => {
   const [href, sethref] = useState("");
+
+  const [showComments, setshowComments] = useState(false);
+
+  const handleCommentsVisibility = (inView) => {
+    if (inView && !showComments) {
+      setshowComments(true);
+    }
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -58,7 +67,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
         window.removeEventListener("scroll", readingProgessTracker);
       }
     };
-  });
+  }, []);
 
   return (
     <>
@@ -255,15 +264,34 @@ const PostTemplate = ({ data, location, pageContext }) => {
                 </aside>
               </div>
             </article>
-            <div className="inner embed-ghost" style={{ marginTop: "20px" }}>
-              <Disqus slug={pageContext.slug} title={data.ghostPost.title} />
-            </div>
-            <div className="inner embed-facebook" style={{ marginTop: "20px" }}>
-              <FbComments
-                slug={pageContext.slug}
-                title={data.ghostPost.title}
-                href={href}
-              />
+            <InView
+              as="div"
+              onChange={(inView) => handleCommentsVisibility(inView)}
+            ></InView>
+            <div>
+              {process.env.GATSBY_DISQUS_SHORTNAME && showComments && (
+                <div
+                  className="inner embed-ghost"
+                  style={{ marginTop: "20px" }}
+                >
+                  <Disqus
+                    slug={pageContext.slug}
+                    title={data.ghostPost.title}
+                  />
+                </div>
+              )}
+              {process.env.GATSBY_FB_APP_ID && showComments && (
+                <div
+                  className="inner embed-facebook"
+                  style={{ marginTop: "20px" }}
+                >
+                  <FbComments
+                    slug={pageContext.slug}
+                    title={data.ghostPost.title}
+                    href={href}
+                  />
+                </div>
+              )}
             </div>
           </main>
           <SubscribeForm />

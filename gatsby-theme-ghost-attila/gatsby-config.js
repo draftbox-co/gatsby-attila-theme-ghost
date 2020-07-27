@@ -5,12 +5,13 @@ const ghostConfigDefaults = require(`./src/utils/.ghost.json`);
 
 const generateRSSFeed = require(`./src/utils/rss/generate-feed`);
 
-module.exports = themeOptions => {
+module.exports = (themeOptions) => {
   const siteConfig = themeOptions.siteConfig || siteConfigDefaults;
   const ghostConfig = themeOptions.ghostConfig || ghostConfigDefaults;
-  const finalConfig = process.env.NODE_ENV === `development`
-  ? ghostConfig.development
-  : ghostConfig.production;
+  const finalConfig =
+    process.env.NODE_ENV === `development`
+      ? ghostConfig.development
+      : ghostConfig.production;
 
   siteConfig.apiUrl = finalConfig.apiUrl;
   return {
@@ -19,21 +20,21 @@ module.exports = themeOptions => {
       {
         resolve: `gatsby-plugin-sass`,
         options: {
-          sassRuleModulesTest: /.*\.module\.s(a|c)ss$/
-        }
+          sassRuleModulesTest: /.*\.module\.s(a|c)ss$/,
+        },
       },
       {
         resolve: `gatsby-plugin-page-creator`,
         options: {
-          path: path.join(__dirname, `src`, `pages`)
-        }
+          path: path.join(__dirname, `src`, `pages`),
+        },
       },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
           path: path.join(__dirname, `src`, `images`),
-          name: `images`
-        }
+          name: `images`,
+        },
       },
       `gatsby-plugin-sharp`,
       `gatsby-transformer-sharp`,
@@ -42,23 +43,23 @@ module.exports = themeOptions => {
         options:
           process.env.NODE_ENV === `development`
             ? ghostConfig.development
-            : ghostConfig.production
+            : ghostConfig.production,
       },
       {
         resolve: `gatsby-transformer-rehype`,
         options: {
-          filter: node =>
+          filter: (node) =>
             node.internal.type === `GhostPost` ||
             node.internal.type === `GhostPage`,
           plugins: [
             {
-              resolve: `gatsby-rehype-prismjs`
+              resolve: `gatsby-rehype-prismjs`,
             },
             {
-              resolve: `gatsby-rehype-ghost-links`
-            }
-          ]
-        }
+              resolve: `gatsby-rehype-ghost-links`,
+            },
+          ],
+        },
       },
       /**
        *  Utility Plugins
@@ -80,8 +81,8 @@ module.exports = themeOptions => {
                 siteDescription
               }
             }
-          }`
-        }
+          }`,
+        },
       },
       {
         resolve: `gatsby-plugin-feed`,
@@ -96,8 +97,8 @@ module.exports = themeOptions => {
               }
             }
           }`,
-          feeds: [generateRSSFeed(siteConfig)]
-        }
+          feeds: [generateRSSFeed(siteConfig)],
+        },
       },
       {
         resolve: `gatsby-plugin-advanced-sitemap`,
@@ -147,17 +148,17 @@ module.exports = themeOptions => {
           `,
           mapping: {
             allGhostPost: {
-              sitemap: `posts`
+              sitemap: `posts`,
             },
             allGhostTag: {
-              sitemap: `tags`
+              sitemap: `tags`,
             },
             allGhostAuthor: {
-              sitemap: `authors`
+              sitemap: `authors`,
             },
             allGhostPage: {
-              sitemap: `pages`
-            }
+              sitemap: `pages`,
+            },
           },
           exclude: [
             `/dev-404-page`,
@@ -168,8 +169,8 @@ module.exports = themeOptions => {
             `/offline.html`,
           ],
           createLinkInHead: true,
-          addUncaughtPages: true
-        }
+          addUncaughtPages: true,
+        },
       },
       `gatsby-plugin-catch-links`,
       `gatsby-plugin-react-helmet`,
@@ -177,8 +178,8 @@ module.exports = themeOptions => {
       {
         resolve: `gatsby-plugin-postcss`,
         options: {
-          postCssPlugins: [require(`cssnano`)()]
-        }
+          postCssPlugins: [require(`cssnano`)()],
+        },
       },
       {
         resolve: `@draftbox-co/gatsby-plugin-amp`,
@@ -190,8 +191,8 @@ module.exports = themeOptions => {
           relAmpHtmlPattern: `{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}`,
           useAmpClientIdApi: true,
           dirName: __dirname,
-          themePath: `src/amp-styles/post.amp.css`
-        }
+          themePath: `src/amp-styles/post.amp.css`,
+        },
       },
       {
         resolve: `gatsby-plugin-remove-generator`,
@@ -199,6 +200,7 @@ module.exports = themeOptions => {
           content: `Draftbox`,
         },
       },
-    ]
+      `gatsby-plugin-remove-serviceworker`,
+    ],
   };
 };
