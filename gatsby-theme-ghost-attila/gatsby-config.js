@@ -200,6 +200,51 @@ module.exports = (themeOptions) => {
           content: `Draftbox`,
         },
       },
+      {
+        resolve: `@draftbox-co/gatsby-plugin-webfonts`,
+        options: {
+          fonts: {
+            google: [
+              {
+                family: "Cardo",
+                variants: ["400", "400i", "700"],
+                //subsets: ['latin']
+                //text: 'Hello'
+                fontDisplay: "swap",
+                strategy: "selfHosted", // 'base64' || 'cdn'
+              },
+              {
+                family: "Fira Sans",
+                variants: ["400", "500", "700"],
+                //subsets: ['latin']
+                //text: 'Hello'
+                fontDisplay: "swap",
+                strategy: "selfHosted", // 'base64' || 'cdn'
+              },
+            ],
+          },
+          formats: ["woff2", "woff"],
+          useMinify: true,
+          usePreload: true,
+          usePreconnect: true,
+          blacklist: ["/amp"],
+        },
+      },
+      {
+        resolve: `@draftbox-co/gatsby-plugin-css-variables`,
+        options: {
+          variables: [
+            { varName: "--primary-color", value: "#673AB7" },
+            { varName: "--primary-color-active", value: "#5a329f" },
+            { varName: "--cardo-font", value: `"Cardo", serif` },
+            { varName: "--cardo-font-normal", value: `400` },
+            { varName: "--fira-sans-font", value: `"Fira Sans", sans-serif` },
+            { varName: "--fira-sans-font-normal", value: `400` },
+            { varName: "--fira-sans-font-semibold", value: `500` },
+            { varName: "--fira-sans-font-bold", value: `700` },
+          ],
+        },
+      },
     ],
   };
 };
