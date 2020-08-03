@@ -7,10 +7,12 @@ import "../styles/prism-theme/prism_dracula.scss";
 
 const PageTemplate = ({ data, location }) => {
   const [href, sethref] = useState("");
+  const [origin, setOrigin] = useState("");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       sethref(window.location.href);
+      setOrigin(window.location.origin);
     }
   }, []);
 
@@ -24,7 +26,7 @@ const PageTemplate = ({ data, location }) => {
 
   let pinterestShareUrl = `https://www.pinterest.com/pin/create/button/?url=${href}&description=${data.ghostPage.title}`
   if (data.ghostPage.localFeatureImage && data.ghostPage.localFeatureImage.publicURL) {
-    pinterestShareUrl += `&media=${data.ghostPage.localFeatureImage.publicURL}`
+    pinterestShareUrl += `&media=${origin + data.ghostPage.localFeatureImage.publicURL}`
   }
 
   const whatsAppShareUrl = `whatsapp://send?text=${data.ghostPage.title}\n${href}`

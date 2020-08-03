@@ -14,6 +14,8 @@ import { InView } from "react-intersection-observer";
 const PostTemplate = ({ data, location, pageContext }) => {
   const [href, sethref] = useState("");
 
+  const [origin, setOrigin] = useState("");
+
   const [showComments, setshowComments] = useState(false);
 
   const handleCommentsVisibility = (inView) => {
@@ -25,6 +27,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       sethref(window.location.href);
+      setOrigin(window.location.origin);
     }
   }, []);
 
@@ -38,7 +41,7 @@ const PostTemplate = ({ data, location, pageContext }) => {
 
   let pinterestShareUrl = `https://www.pinterest.com/pin/create/button/?url=${href}&description=${data.ghostPost.title}`
   if (data.ghostPost.localFeatureImage && data.ghostPost.localFeatureImage.publicURL) {
-    pinterestShareUrl += `&media=${data.ghostPost.localFeatureImage.publicURL}`
+    pinterestShareUrl += `&media=${origin + data.ghostPost.localFeatureImage.publicURL}`
   }
 
   const whatsAppShareUrl = `https://wa.me/?text=${encodeURIComponent(data.ghostPost.title + "\n" + href)}`;
