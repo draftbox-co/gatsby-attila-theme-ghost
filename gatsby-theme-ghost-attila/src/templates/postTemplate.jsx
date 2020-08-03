@@ -36,6 +36,13 @@ const PostTemplate = ({ data, location, pageContext }) => {
 
   const mailShareUrl = `mailto:?subject=${data.ghostPost.title}&body=${href}`;
 
+  let pinterestShareUrl = `https://www.pinterest.com/pin/create/button/?url=${href}&description=${data.ghostPost.title}`
+  if (data.ghostPost.localFeatureImage && data.ghostPost.localFeatureImage.publicURL) {
+    pinterestShareUrl += `&media=${data.ghostPost.localFeatureImage.publicURL}`
+  }
+
+  const whatsAppShareUrl = `https://wa.me/?text=${encodeURIComponent(data.ghostPost.title + "\n" + href)}`;
+
   const postContentRef = useRef();
 
   const [readProgress, setReadProgress] = useState(0);
@@ -198,6 +205,26 @@ const PostTemplate = ({ data, location, pageContext }) => {
                     >
                       <i className="icon icon-linkedin"></i>
                       <span className="hidden">LinkedIn</span>
+                    </a>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Pinterest"
+                      className="pinterest"
+                      href={pinterestShareUrl}
+                    >
+                      <i className="icon icon-pinterest"></i>
+                      <span className="hidden">Pinterest</span>
+                    </a>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="WhatsApp"
+                      className="whatsapp"
+                      href={whatsAppShareUrl}
+                    >
+                      <i className="icon icon-whatsapp"></i>
+                      <span className="hidden">WhatsApp</span>
                     </a>
                     <a
                       target="_blank"

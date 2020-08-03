@@ -1600,7 +1600,6 @@ input[type="password"] {
 .nav-footer {
   position: relative;
   z-index: 20;
-  padding-top: calc(12rem + 8vw);
   padding-bottom: 4rem;
   margin-top: auto;
 
@@ -1774,7 +1773,7 @@ input[type="password"] {
   font-size: 0.5em;
   font-style: normal;
   font-weight: normal;
-  content: "\e800";
+  content: "\e806";
   color: $color-yellow-100;
   text-align: center;
 }
@@ -2067,7 +2066,7 @@ input[type="password"] {
 
 .post-share {
   position: relative;
-  max-width: 33.33333%;
+  max-width: 50%;
   float: right;
   display: flex;
   @media only screen and (max-width: $breakpoint-medium) {
@@ -2140,9 +2139,17 @@ input[type="password"] {
   background-color: $color-social-mail;
 }
 
+.post-share .pinterest {
+  background-color: $color-social-pinterest;
+}
+
+.post-share .whatsapp {
+  background-color: $color-social-whatsapp;
+}
+
 .post-tags {
   position: relative;
-  max-width: 66.66666%;
+  max-width: 50%;
   float: left;
   display: flex;
   flex-wrap: wrap;

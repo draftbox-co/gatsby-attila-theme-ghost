@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Helmet from "react-helmet";
@@ -6,13 +6,28 @@ import { MetaData } from "../components/meta";
 import "../styles/prism-theme/prism_dracula.scss";
 
 const PageTemplate = ({ data, location }) => {
-  const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPage.title}&url=${data.ghostPage.url}`;
+  const [href, sethref] = useState("");
 
-  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${data.ghostPage.url}`;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      sethref(window.location.href);
+    }
+  }, []);
 
-  const linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&amp;url=${data.ghostPage.url}/&amp;title=${data.ghostPage.title}`;
+  const twitterShareUrl = `https://twitter.com/share?text=${data.ghostPage.title}&url=${href}`;
 
-  const mailShareUrl = `mailto:?subject=${data.ghostPage.title}&amp;body=${data.ghostPage.url}`;
+  const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${href}`;
+
+  const linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${href}&title=${data.ghostPage.title}`;
+
+  const mailShareUrl = `mailto:?subject=${data.ghostPage.title}&body=${href}`;
+
+  let pinterestShareUrl = `https://www.pinterest.com/pin/create/button/?url=${href}&description=${data.ghostPage.title}`
+  if (data.ghostPage.localFeatureImage && data.ghostPage.localFeatureImage.publicURL) {
+    pinterestShareUrl += `&media=${data.ghostPage.localFeatureImage.publicURL}`
+  }
+
+  const whatsAppShareUrl = `whatsapp://send?text=${data.ghostPage.title}\n${href}`
 
   return (
     <>
@@ -136,6 +151,26 @@ const PageTemplate = ({ data, location }) => {
                     >
                       <i className="icon icon-linkedin"></i>
                       <span className="hidden">LinkedIn</span>
+                    </a>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Pinterest"
+                      className="pinterest"
+                      href={pinterestShareUrl}
+                    >
+                      <i className="icon icon-pinterest"></i>
+                      <span className="hidden">Pinterest</span>
+                    </a>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="WhatsApp"
+                      className="whatsapp"
+                      href={whatsAppShareUrl}
+                    >
+                      <i className="icon icon-whatsapp"></i>
+                      <span className="hidden">WhatsApp</span>
                     </a>
                     <a
                       target="_blank"

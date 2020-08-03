@@ -10,6 +10,7 @@ const SubscribeForm = () => {
         siteMetadata {
           siteTitle
           subscribeWidget {
+            visible
             title
             helpText
             successMessage
@@ -35,24 +36,32 @@ const SubscribeForm = () => {
     handleSubmit({ email });
   };
 
-  return (
+  return subscribeWidget.visible ? (
     <div className="subscribe-form" id="subscribe">
       <form onSubmit={(e) => onSubmit(e)}>
         {succeeded && (
           <h1
             className="subscribe-title"
             dangerouslySetInnerHTML={{
-              __html: `${subscribeWidget.successMessage ? subscribeWidget.successMessage : 'You’ve successfully subscribed to ' + siteTitle + '.'}`,
+              __html: `${
+                subscribeWidget.successMessage
+                  ? subscribeWidget.successMessage
+                  : "You’ve successfully subscribed to " + siteTitle + "."
+              }`,
             }}
           ></h1>
         )}
         {!succeeded && (
           <>
             <h1 className="subscribe-title">
-              {subscribeWidget.title ? subscribeWidget.title : "Subscribe to " + siteTitle}
+              {subscribeWidget.title
+                ? subscribeWidget.title
+                : "Subscribe to " + siteTitle}
             </h1>
             <p className="subscribe-description">
-            {subscribeWidget.helpText ? subscribeWidget.helpText: `Get the latest posts delivered right to your inbox.`}
+              {subscribeWidget.helpText
+                ? subscribeWidget.helpText
+                : `Get the latest posts delivered right to your inbox.`}
             </p>
             <div>
               <label className="hidden" htmlFor="email">
@@ -74,6 +83,8 @@ const SubscribeForm = () => {
         )}
       </form>
     </div>
+  ) : (
+    <div></div>
   );
 };
 
