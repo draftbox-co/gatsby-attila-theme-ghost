@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Helmet from "react-helmet";
 import { MetaData } from "../components/meta";
 import "../styles/prism-theme/prism_dracula.scss";
+import CopyLink from "../components/copy-link";
+import SubscribeForm from "../components/subscribe-form";
 
 const PageTemplate = ({ data, location }) => {
   const [href, sethref] = useState("");
@@ -24,12 +26,17 @@ const PageTemplate = ({ data, location }) => {
 
   const mailShareUrl = `mailto:?subject=${data.ghostPage.title}&body=${href}`;
 
-  let pinterestShareUrl = `https://www.pinterest.com/pin/create/button/?url=${href}&description=${data.ghostPage.title}`
-  if (data.ghostPage.localFeatureImage && data.ghostPage.localFeatureImage.publicURL) {
-    pinterestShareUrl += `&media=${origin + data.ghostPage.localFeatureImage.publicURL}`
+  let pinterestShareUrl = `https://www.pinterest.com/pin/create/button/?url=${href}&description=${data.ghostPage.title}`;
+  if (
+    data.ghostPage.localFeatureImage &&
+    data.ghostPage.localFeatureImage.publicURL
+  ) {
+    pinterestShareUrl += `&media=${
+      origin + data.ghostPage.localFeatureImage.publicURL
+    }`;
   }
 
-  const whatsAppShareUrl = `whatsapp://send?text=${data.ghostPage.title}\n${href}`
+  const whatsAppShareUrl = `whatsapp://send?text=${data.ghostPage.title}\n${href}`;
 
   return (
     <>
@@ -184,6 +191,7 @@ const PageTemplate = ({ data, location }) => {
                       <i className="icon icon-mail"></i>
                       <span className="hidden">Email</span>
                     </a>
+                    <CopyLink textToCopy={href} />
                   </div>
                   {data.ghostPage.primary_tag && (
                     <aside className="post-tags">
@@ -239,6 +247,7 @@ const PageTemplate = ({ data, location }) => {
               </div>
             </article>
           </main>
+          <SubscribeForm />
         </Layout>
       </div>
     </>
