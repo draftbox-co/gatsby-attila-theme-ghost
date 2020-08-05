@@ -4,7 +4,6 @@
 @import "normalize";
 @import "colors";
 @import "icons";
-@import "fonts";
 @import "highlight";
 @import "utilities";
 $breakpoint-large: 960px;
@@ -25,7 +24,8 @@ html.menu-active {
 }
 
 body {
-  font: 400 1em / 1.5em "Fira Sans", sans-serif;
+  font: 400 1em / 1.5em var(--fira-sans-font);
+  font-family: var(--fira-sans-font);
   color: $color-text-primary;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -117,7 +117,7 @@ input[type="password"] {
     margin-left: 0em;
     margin-top: 2rem;
     padding: 0 2rem;
-    font-weight: 500;
+    font-weight: var(--fira-sans-font-semibold);
     color: #fff;
     background: $color-primary;
     border: 0;
@@ -158,7 +158,7 @@ input[type="password"] {
     .subscribe-description {
       font-size: 2rem;
       line-height: 3rem;
-      font-family: "Cardo", serif;
+      font-family: var(--cardo-font);
       margin: 2rem auto;
       text-align: center;
     }
@@ -169,7 +169,7 @@ input[type="password"] {
     font-size: 2em;
     margin: 0.5rem 2rem;
     padding: 0 2rem;
-    font-weight: 500;
+    font-weight: var(--fira-sans-font-semibold);
     color: #fff;
     background: $color-primary;
     border: 0;
@@ -195,7 +195,7 @@ input[type="password"] {
   a {
     color: inherit;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: var(--fira-sans-font-normal);
     box-shadow: inset 0 -2px 0 $color-primary;
     transition: all ease-out 0.1s;
 
@@ -241,7 +241,7 @@ input[type="password"] {
   h5,
   h6 {
     font-size: 2rem;
-    font-weight: 500;
+    font-weight: var(--fira-sans-font-semibold);
   }
 
   h1 a,
@@ -254,13 +254,13 @@ input[type="password"] {
   }
 
   p {
-    font-family: "Cardo", serif;
+    font-family: var(--cardo-font);
     margin: 0 0 4rem;
   }
 
   ol,
   ul {
-    font-family: "Cardo", serif;
+    font-family: var(--cardo-font);
     margin: 0 0 4rem;
     padding-left: 2em;
     box-sizing: border-box;
@@ -280,11 +280,11 @@ input[type="password"] {
     width: 1.5em;
     margin-left: -2em;
     font-size: 1em;
-    font-weight: 500;
+    font-weight: var(--fira-sans-font-semibold);
     line-height: 1.5em;
     text-align: right;
     color: $color-primary;
-    font-family: "Fira Sans", sans-serif;
+    font-family: var(--fira-sans-font);
   }
 
   ul > li:before {
@@ -324,14 +324,14 @@ input[type="password"] {
   }
 
   blockquote {
-    font-family: "Cardo", serif;
+    font-family: var(--cardo-font);
     margin: 0 0 4rem;
     padding: 0.25em 1em;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     border-left: 0.25em solid $color-primary;
     font-style: italic;
-    font-weight: 400;
+    font-weight: var(--cardo-font-normal);
   }
 
   blockquote * {
@@ -355,7 +355,7 @@ input[type="password"] {
 
   b,
   strong {
-    font-weight: 700;
+    font-weight: var(--fira-sans-font-bold);
     @media (prefers-color-scheme: dark) {
       color: $color-neutral-80;
     }
@@ -366,16 +366,15 @@ input[type="password"] {
   }
 
   dl {
-    font-family: "Cardo", serif;
+    font-family: var(--cardo-font);
     margin: 0 0 4rem;
     padding-left: 30px;
   }
 
   dl dt {
-    font-weight: 500;
     font-size: 0.75em;
     line-height: 1.25em;
-    font-weight: 700;
+    font-weight: var(--fira-sans-font-bold);
     margin-bottom: 0.33334em;
   }
 
@@ -521,7 +520,7 @@ input[type="password"] {
 
     th {
       text-align: left;
-      font-weight: 500;
+      font-weight: var(--fira-sans-font-semibold);
       letter-spacing: 1px;
       font-size: 0.75em;
       line-height: 1.33334em;
@@ -703,7 +702,7 @@ input[type="password"] {
     color: $color-text-primary;
     font-size: 0.75em;
     line-height: 1.66667em;
-    font-weight: 700;
+    font-weight: var(--fira-sans-font-bold);
     letter-spacing: 0.5px;
     @media (prefers-color-scheme: dark) {
       color: $color-text-primary-dark;
@@ -714,7 +713,7 @@ input[type="password"] {
     display: -webkit-box;
     font-size: 0.75em;
     line-height: 1.66667em;
-    font-weight: 400;
+    font-weight: var(--fira-sans-font-normal);
     margin-top: 0.33334em;
     max-height: 3.33334em;
     overflow-y: hidden;
@@ -744,7 +743,7 @@ input[type="password"] {
     font-size: 0.75em;
     line-height: 1.66667em;
     color: $color-text-primary;
-    font-weight: 400;
+    font-weight: var(--fira-sans-font-normal);
     margin-top: 1em;
     flex-wrap: wrap;
     @media (prefers-color-scheme: dark) {
@@ -940,7 +939,7 @@ input[type="password"] {
   display: block;
   margin: 0;
   padding: 0;
-  font-weight: 700;
+  font-weight: var(--fira-sans-font-bold);
   font-size: 6em;
   line-height: 1em;
   text-decoration: none;
@@ -955,7 +954,7 @@ input[type="password"] {
 }
 
 .blog-description {
-  font-family: "Cardo", serif;
+  font-family: var(--cardo-font);
   display: block;
   margin-top: 1rem;
   padding: 0;
@@ -1025,7 +1024,7 @@ input[type="password"] {
     font-size: 2em;
     line-height: 1.5em;
     margin: 1rem 0;
-    font-family: "Cardo", serif;
+    font-family: var(--cardo-font);
     color: $color-text-secondary;
     @media (prefers-color-scheme: dark) {
       color: $color-text-secondary-dark;
@@ -1467,7 +1466,7 @@ input[type="password"] {
 
     span {
       color: $color-neutral-25;
-      font-weight: 500;
+      font-weight: var(--fira-sans-font-semibold);
       @media (prefers-color-scheme: dark) {
         color: $color-neutral-90;
       }
@@ -1486,7 +1485,7 @@ input[type="password"] {
     white-space: nowrap;
     text-overflow: ellipsis;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: var(--fira-sans-font-normal);
     cursor: pointer;
     transition: color linear 0.1s;
     @media only screen and (max-width: $breakpoint-medium) {
@@ -1601,7 +1600,6 @@ input[type="password"] {
 .nav-footer {
   position: relative;
   z-index: 20;
-  padding-top: calc(12rem + 8vw);
   padding-bottom: 4rem;
   margin-top: auto;
 
@@ -1681,7 +1679,7 @@ input[type="password"] {
 
   &.active a {
     color: $color-neutral-25;
-    font-weight: 500;
+    font-weight: var(--fira-sans-font-semibold);
     @media (prefers-color-scheme: dark) {
       color: $color-neutral-90;
     }
@@ -1695,7 +1693,7 @@ input[type="password"] {
     white-space: nowrap;
     text-overflow: ellipsis;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: var(--fira-sans-font-normal);
     cursor: pointer;
 
     &:focus,
@@ -1739,7 +1737,7 @@ input[type="password"] {
   a {
     color: inherit;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: var(--fira-sans-font-semibold);
   }
 }
 /* ==========================================================================
@@ -1775,7 +1773,7 @@ input[type="password"] {
   font-size: 0.5em;
   font-style: normal;
   font-weight: normal;
-  content: "\e800";
+  content: "\e806";
   color: $color-yellow-100;
   text-align: center;
 }
@@ -1892,7 +1890,7 @@ input[type="password"] {
   margin: 0 0 2rem;
   font-size: 4em;
   line-height: 1.25em;
-  font-weight: 700;
+  font-weight: var(--fira-sans-font-bold);
   text-indent: -1px;
   color: #000;
   @media (prefers-color-scheme: dark) {
@@ -1917,7 +1915,7 @@ input[type="password"] {
 }
 
 .post-meta {
-  font-weight: 400;
+  font-weight: var(--fira-sans-font-normal);
   font-size: 1.5rem;
   line-height: 2rem;
   color: $color-text-secondary;
@@ -1992,7 +1990,7 @@ input[type="password"] {
 
   .post-meta-author {
     color: $color-text-primary;
-    font-weight: 500;
+    font-weight: var(--fira-sans-font-semibold);
     margin: 0;
     @media (prefers-color-scheme: dark) {
       color: $color-text-primary-dark;
@@ -2019,7 +2017,7 @@ input[type="password"] {
 
 .post-excerpt {
   margin: 1em 0 0;
-  font-family: "Cardo", serif;
+  font-family: var(--cardo-font);
   font-size: 2em;
   line-height: 1.5em;
 }
@@ -2062,13 +2060,13 @@ input[type="password"] {
   margin-right: 0.75em;
   font-size: 1.5em;
   line-height: 3rem;
-  font-weight: 400;
+  font-weight: var(--fira-sans-font-normal);
   color: $color-neutral-60;
 }
 
 .post-share {
   position: relative;
-  max-width: 33.33333%;
+  max-width: 50%;
   float: right;
   display: flex;
   @media only screen and (max-width: $breakpoint-medium) {
@@ -2141,9 +2139,17 @@ input[type="password"] {
   background-color: $color-social-mail;
 }
 
+.post-share .pinterest {
+  background-color: $color-social-pinterest;
+}
+
+.post-share .whatsapp {
+  background-color: $color-social-whatsapp;
+}
+
 .post-tags {
   position: relative;
-  max-width: 66.66666%;
+  max-width: 50%;
   float: left;
   display: flex;
   flex-wrap: wrap;
@@ -2161,7 +2167,7 @@ input[type="password"] {
   padding: 0 1.5rem;
   background: $color-primary;
   font-size: 1.5em;
-  font-weight: 500;
+  font-weight: var(--fira-sans-font-semibold);
   line-height: 3rem;
   text-align: center;
   text-decoration: none;
@@ -2206,7 +2212,7 @@ input[type="password"] {
   margin: 2rem 0;
   padding: 0 2rem;
   border: 1px solid $color-neutral-80;
-  font-weight: 500;
+  font-weight: var(--fira-sans-font-semibold);
   font-size: 1.5em;
   line-height: 4rem;
   color: $color-neutral-60;
@@ -2273,7 +2279,7 @@ input[type="password"] {
       font-size: 0.8em;
       height: 2.5em;
       padding: 0 1.25em 0 1em;
-      font-weight: 500;
+      font-weight: var(--fira-sans-font-semibold);
       color: #fff;
       background: $color-neutral-60;
       border: 0;
@@ -2439,7 +2445,7 @@ input[type="password"] {
 .post-nav-excerpt {
   height: 5rem;
   margin: 0 0 1rem;
-  font-family: "Cardo", serif;
+  font-family: var(--cardo-font);
   font-size: 1.75em;
   line-height: 2.5rem;
   display: -webkit-box;
@@ -2484,7 +2490,7 @@ input[type="password"] {
   border: 1px solid $color-neutral-80;
   font-size: 1.5em;
   line-height: 4rem;
-  font-weight: 500;
+  font-weight: var(--fira-sans-font-semibold);
   text-align: center;
   text-decoration: none;
   color: $color-neutral-60;
@@ -2596,7 +2602,7 @@ input[type="password"] {
   }
 
   .error-description {
-    font-family: "Cardo", serif;
+    font-family: var(--cardo-font);
     font-size: 2em;
     line-height: 1.5em;
   }
@@ -2610,7 +2616,7 @@ input[type="password"] {
     white-space: nowrap;
     text-overflow: ellipsis;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: var(--fira-sans-font-normal);
     cursor: pointer;
     transition: color linear 0.1s;
 
@@ -2621,4 +2627,6 @@ input[type="password"] {
   }
 }
 
-.fb-comments iframe { width: 100% !important; }
+.fb-comments iframe {
+  width: 100% !important;
+}

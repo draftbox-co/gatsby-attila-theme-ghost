@@ -22,6 +22,12 @@ const Navbar = () => {
             instagram
             linkedin
             github
+            whatsapp
+            pinterest
+            youtube
+            dribbble
+            behance
+            externalLink
           }
         }
       }
@@ -149,6 +155,84 @@ const Navbar = () => {
                 >
                   <i className="icon icon-github-circled"></i>
                   <span>GitHub</span>
+                </a>
+              </li>
+            )}
+            {socialLinks.pinterest && (
+              <li className="nav-twitter">
+                <a
+                  href={socialLinks.pinterest}
+                  title="Pinterest"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <i className="icon icon-pinterest"></i>
+                  <span>Pinterest</span>
+                </a>
+              </li>
+            )}
+            {socialLinks.youtube && (
+              <li className="nav-twitter">
+                <a
+                  href={socialLinks.youtube}
+                  title="Youtube"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <i className="icon icon-youtube-play"></i>
+                  <span>Youtube</span>
+                </a>
+              </li>
+            )}
+            {socialLinks.dribbble && (
+              <li className="nav-twitter">
+                <a
+                  href={socialLinks.dribbble}
+                  title="Dribbble"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <i className="icon icon-dribbble"></i>
+                  <span>Dribbble</span>
+                </a>
+              </li>
+            )}
+            {socialLinks.behance && (
+              <li className="nav-twitter">
+                <a
+                  href={socialLinks.behance}
+                  title="Behance"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <i className="icon icon-behance"></i>
+                  <span>Behance</span>
+                </a>
+              </li>
+            )}
+            {socialLinks.whatsapp && (
+              <li className="nav-twitter">
+                <a
+                  href={socialLinks.whatsapp}
+                  title="WhatsApp"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <i className="icon icon-whatsapp"></i>
+                  <span>WhatsApp</span>
+                </a>
+              </li>
+            )}
+            {socialLinks.externalLink && (
+              <li className="nav-twitter">
+                <a
+                  href={socialLinks.externalLink}
+                  title="External Link"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <i className="icon icon-link"></i>
+                  <span>External Link</span>
                 </a>
               </li>
             )}

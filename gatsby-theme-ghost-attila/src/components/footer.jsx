@@ -20,6 +20,9 @@ const Footer = () => {
               url
             }
           }
+          subscribeWidget {
+            visible
+          }
         }
       }
     }
@@ -30,10 +33,18 @@ const Footer = () => {
   const apiUrl = data.site.siteMetadata.apiUrl;
   const copyright = data.site.siteMetadata.footer.copyright;
   const siteTitle = data.site.siteMetadata.siteTitle;
+  const subscribeWidget = data.site.siteMetadata.subscribeWidget;
 
   return (
     <>
-      <div className="nav-footer">
+      <div
+        className="nav-footer"
+        style={
+          subscribeWidget.visible
+            ? { paddingTop: "calc(12rem + 8vw)" }
+            : { paddingTop: "calc(0rem + 8vw)" }
+        }
+      >
         <nav className="nav-wrapper">
           <span className="nav-copy">
             <span
