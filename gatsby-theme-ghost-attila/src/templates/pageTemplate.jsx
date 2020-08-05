@@ -36,7 +36,9 @@ const PageTemplate = ({ data, location }) => {
     }`;
   }
 
-  const whatsAppShareUrl = `whatsapp://send?text=${data.ghostPage.title}\n${href}`;
+  const whatsAppShareUrl = `https://wa.me/?text=${encodeURIComponent(
+    data.ghostPage.title + "\n" + href
+  )}`;
 
   return (
     <>
